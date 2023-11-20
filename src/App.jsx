@@ -3,7 +3,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import NavBar from './Components/NavBar';
 import './App.css';
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -43,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+

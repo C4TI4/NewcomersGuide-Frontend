@@ -14,10 +14,15 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
+  Switch,
 } from "@nextui-org/react";
 import { AcmeLogo } from "../assets/Images/AcmeLogo.jsx";
 import { SearchIcon } from "../assets/Images/SearchIcon.jsx";
 import PropTypes from 'prop-types';
+// import { VisuallyHidden, useSwitch } from '@nextui-org/react';
+// import { MoonIcon } from '../assets/Images/MoonIcon'; 
+// import { SunIcon } from '../assets/Images/SunIcon'; 
+import ThemeSwitch from "./ThemeSwitch.jsx";
 
 
 export default function NavBar({ isDarkMode, toggleDarkMode }) {
@@ -104,22 +109,30 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">UserName</p>
             </DropdownItem>
-            {/* ... other items */}
+            <DropdownItem key="settings">My Settings</DropdownItem>
+            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem key="analytics">Analytics</DropdownItem>
+            <DropdownItem key="system">System</DropdownItem>
+            <DropdownItem key="configurations">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger">
+              Log Out
+            </DropdownItem>
+
           </DropdownMenu>
         </Dropdown>
         {/* Dark Mode Toggle */}
         <div className="dark-mode-toggle">
-          <label>
-            Dark Mode
-            <input
-              type="checkbox"
-              checked={isDarkMode}
-              onChange={toggleDarkMode}
-            />
-          </label>
-        </div>
+        <Switch
+          checked={isDarkMode}
+          onChange={toggleDarkMode}
+          render={(props) => (
+            <ThemeSwitch Component={Switch} {...props} isSelected={isDarkMode} />
+          )}
+        />
+      </div>
       </NavbarContent>
 
       {/* NavbarMenu */}
