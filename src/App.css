@@ -1,3 +1,4 @@
+/* Default light theme styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,9 +12,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +25,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +43,27 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Dark theme styles */
+.dark #root {
+  background-color: #1a202c;
+  color: #d8dee9;
+}
+
+.dark .logo:hover {
+  filter: drop-shadow(0 0 2em #81a1c1aa);
+}
+
+.dark .logo.react:hover {
+  filter: drop-shadow(0 0 2em #8be9fdaa);
+}
+
+.dark .card {
+  background-color: #2e3440;
+  color: #d8dee9;
+}
+
+.dark .read-the-docs {
+  color: #d8dee9;
 }
