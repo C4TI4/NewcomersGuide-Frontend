@@ -17,12 +17,12 @@ export default function Footer() {
             {/* Logo and Description */}
             <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
               <img
-                src={"https://i.imgur.com/your_logo.png"}
+                src="../assets/Images/Newcomers-Logo.png"
                 alt="footer_logo"
                 className="w-[18rem]"
               />
               <p className="text-[15px] font-medium text-[#646464]">
-                Welcome to the Newcomer's Guide, your ultimate resource for
+                Welcome to the Newcomer`s Guide, your ultimate resource for
                 getting started in a new place. Discover valuable insights and
                 information to make your transition smoother.
               </p>
@@ -39,7 +39,7 @@ export default function Footer() {
               </div>
               {/* Copyright and Credits */}
               <p className="text-[16px] font-medium text-[#646464]">
-                Privacy Policy | © {new Date().getFullYear()} Newcomer's Guide
+                Privacy Policy | © {new Date().getFullYear()} Newcomer`s Guide
                 <br />
                 Design by{" "}
                 <a
@@ -47,12 +47,12 @@ export default function Footer() {
                   rel="noreferrer"
                   href="https://www.your-website.com/"
                 >
-                  Your Name
-                </a>
+                  Newcomer`s Guide
+                  </a>
               </p>
             </div>
 
-            {/* Our Classes Section */}
+            {/* Explore the site */}
             <div className="flex flex-col gap-8 relative">
               <p className="text-[22px] font-bold footer-main">Explore</p>
               <span className="top-[33px] absolute w-[7rem] h-[4px] bg-[#ff0366]"></span>
@@ -73,16 +73,17 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Contact Information */}
+            {/* Join us */}
+
             <div className="flex flex-col gap-8 relative">
-              <p className="text-[22px] font-bold footer-main">Contact Us</p>
+              <p className="text-[22px] font-bold footer-main">Join Us</p>
               <span className="top-[33px] absolute w-[7rem] h-[4px] bg-[#ff0366]"></span>
-              <p className="text-[16px] text-[#646464] font-bold">Email:</p>
+              <p className="text-[16px] text-[#646464] font-bold">Sign In</p>
               <p className="text-[16px] text-[#646464] font-medium">
                 contact@newcomersguide.com
               </p>
-              <p className="text-[16px] text-[#646464] font-bold">Phone:</p>
-              <p className="text-[16px] text-[#646464] font-medium">123-456-7890</p>
+              <p className="text-[16px] text-[#646464] font-bold">Subscribe to our Newsletter</p>
+              <p className="text-[16px] text-[#646464] font-medium"></p>
             </div>
           </div>
         </div>
