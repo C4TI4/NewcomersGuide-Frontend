@@ -1,4 +1,4 @@
-/* Default light theme styles */
+Default light theme styles
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -45,7 +45,8 @@
   color: #888;
 }
 
-/* Dark theme styles */
+Default Dark Theme styles
+
 .dark #root {
   background-color: #1a202c;
   color: #d8dee9;

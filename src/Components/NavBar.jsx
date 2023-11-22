@@ -5,7 +5,7 @@ import {
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
-  NavbarMenuItem,
+  NavbarMenuItem, 
   NavbarMenu,
   Link,
   Input,
@@ -51,16 +51,16 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <AcmeLogo />
-          <p className="font-bold text-inherit">Newcomer's guide</p>
+          <p className="font-bold text-inherit">Newcomer`s guide</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
           <AcmeLogo />
-          <p className="flex font-bold text-inherit">Newcomer's Guide</p>
+          <p className="flex font-bold text-inherit">Newcomer`s Guide</p>
         </NavbarBrand>
-        {/* Other NavbarItems */}
+        {/* NavbarItems */}
         <NavbarItem>
           <Link color="foreground" href="#">
             Unwritten Rules
@@ -106,6 +106,8 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
+
+
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
@@ -123,10 +125,11 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
 
           </DropdownMenu>
         </Dropdown>
+        
         {/* Dark Mode Toggle */}
         <div className="dark-mode-toggle">
         <Switch
-          checked={isDarkMode}
+          checked={isDarkMode.toString()}
           onChange={toggleDarkMode}
           render={(props) => (
             <ThemeSwitch Component={Switch} {...props} isSelected={isDarkMode} />
