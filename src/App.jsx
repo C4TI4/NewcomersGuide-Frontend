@@ -1,48 +1,22 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
-import NavBar from './Components/NavBar';
-import './App.css';
-import Footer from './Components/Footer';
+import Home from './Pages/Home';
+
 export default function App() {
-  const [count, setCount] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
+  // const toggleDarkMode = () => {
+  //   setIsDarkMode((prev) => !prev);
+  // };
 
-  return (
-    <NextUIProvider dark={isDarkMode.toString()}>
-      <div>
-        {/* pass isDarkMode and toggleDarkMode as props to NavBar */}
-        <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+    return (
+      <NextUIProvider dark={isDarkMode.toString()}>
+      <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
       </div>
-      <div className={`app-container ${isDarkMode ? 'dark' : ''}`}>
-        <header>
-          <h1>Header</h1>
-        </header>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            Count is {count}
-          </button>
-          <p>Edit <code>src/App.jsx</code> 3</p>
-        </div>
-        <p className="read-the-docs">Let`s get building ladiessss :D</p>
-        <div className="dark-mode-toggle">
-          <label>
-            Dark Mode
-            <input
-              type="checkbox"
-              checked={isDarkMode}
-              onChange={toggleDarkMode}
-            />
-          </label>
-        </div>
-      </div>
-      <Footer />
-
     </NextUIProvider>
   );
 }
-
-
