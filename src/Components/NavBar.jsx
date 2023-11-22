@@ -5,7 +5,7 @@ import {
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
-  NavbarMenuItem,
+  NavbarMenuItem, 
   NavbarMenu,
   Link,
   Input,
@@ -60,7 +60,7 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
           <AcmeLogo />
           <p className="flex font-bold text-inherit">Newcomer's Guide</p>
         </NavbarBrand>
-        {/* Other NavbarItems */}
+        {/* NavbarItems */}
         <NavbarItem>
           <Link color="foreground" href="#">
             Unwritten Rules

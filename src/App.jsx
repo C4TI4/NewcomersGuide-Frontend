@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
 import NavBar from './Components/NavBar';
 import './App.css';
-
+import Footer from './Components/Footer';
 export default function App() {
   const [count, setCount] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -27,7 +27,7 @@ export default function App() {
           </button>
           <p>Edit <code>src/App.jsx</code> 3</p>
         </div>
-        <p className="read-the-docs">Let's get building ladiessss :D</p>
+        <p className="read-the-docs">Let`s get building ladiessss :D</p>
         <div className="dark-mode-toggle">
           <label>
             Dark Mode
@@ -39,6 +39,8 @@ export default function App() {
           </label>
         </div>
       </div>
+      <Footer />
+
     </NextUIProvider>
   );
 }
