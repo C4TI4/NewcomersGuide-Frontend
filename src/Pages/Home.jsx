@@ -32,7 +32,7 @@ export default function Home() {
         
         </div>
       </div>
-      <Footer />
+      <Footer isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 </div>
     </NextUIProvider>
   );

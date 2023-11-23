@@ -5,7 +5,7 @@ import {
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
-  NavbarMenuItem, 
+  NavbarMenuItem,
   NavbarMenu,
   Link,
   Input,
@@ -25,6 +25,7 @@ import PropTypes from 'prop-types';
 import ThemeSwitch from "./ThemeSwitch.jsx";
 
 
+
 export default function NavBar({ isDarkMode, toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -42,7 +43,7 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
   ];
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} >
       {/* NavbarContent and NavbarBrand */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -60,20 +61,88 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
           <AcmeLogo />
           <p className="flex font-bold text-inherit">Newcomer`s Guide</p>
         </NavbarBrand>
+
+
         {/* NavbarItems */}
+      
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Unwritten Rules
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
+        <Dropdown>
+          <DropdownTrigger>
+          <Link
+      color="foreground"
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+      }}
+    >
+      Unwritten Rules
+    </Link>
+          </DropdownTrigger>
+          <Dropdown.Content>
+            {/* Dropdown Items */}
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                Clothing & Style
+              </Link>
+            </DropdownItem>
+
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+              Recycling 
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                Post Service & Laws
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                Public Transport
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                Clubs & Q`s
+              </Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                At The Supermarket
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                On the Streets
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem>
+              <Link color="foreground" href="/articles-page">
+                Language & Slang
+              </Link>
+            </DropdownItem>
+          </Dropdown.Content>
+        </Dropdown>
+
+
+      </NavbarItem>
+        <NavbarItem >
           <Link href="#" aria-current="page">
             First Steps
           </Link>
         </NavbarItem>
+
+        {/*  Interactive map - link to Map page*/}
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integration
+            Interactive Map
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -106,8 +175,6 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-
-
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
@@ -125,11 +192,10 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
 
           </DropdownMenu>
         </Dropdown>
-        
         {/* Dark Mode Toggle */}
         <div className="dark-mode-toggle">
         <Switch
-          checked={isDarkMode.toString()}
+          checked={isDarkMode}
           onChange={toggleDarkMode}
           render={(props) => (
             <ThemeSwitch Component={Switch} {...props} isSelected={isDarkMode} />
