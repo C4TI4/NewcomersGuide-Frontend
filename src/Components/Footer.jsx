@@ -11,13 +11,13 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white">
+      <footer className="flex mt-16 md:m-16 ">
         <div className="container mx-auto py-[10rem]">
           <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] text-left">
             {/* Logo and Description */}
             <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
               <img
-                src="../assets/Images/Newcomers-Logo.png"
+                src="/src/assets/Images/Newcomers-Logo.png"
                 alt="footer_logo"
                 className="w-[18rem]"
               />
