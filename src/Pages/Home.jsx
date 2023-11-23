@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
+import ArticleList from '../Components/ArticleList';
 export default function Home() {
   const [count, setCount] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
         
         </div>
       </div>
+      <ArticleList />
       <Footer />
 </div>
     </NextUIProvider>

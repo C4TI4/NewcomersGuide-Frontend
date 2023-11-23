@@ -1,8 +1,10 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getAllArticle } from '../../lib/bdClient';
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchArticles() {
@@ -17,23 +19,23 @@ const ArticleList = () => {
     fetchArticles();
   }, []);
 
+  const handleArticleClick = (id) => {
+    navigate(`/article/${id}`);
+  };
+
   return (
-      <div>
-        {articleList.map(article => (
-          <div key={article._id}>
+    <div>
+      {articleList.map(article => (
+        <div key={article._id} onClick={() => handleArticleClick(article._id)}>
+          <Link to={`/article/${article._id}`}>
             <h2>{article.title}</h2>
-            <img src={article.imgSrc[0]} alt="Article" /> 
-            {article.article && article.article.length > 0 &&
-              article.article.map((item, index) => (
-                <div key={index}>
-                  <h4>{item.headline}</h4>
-                  <p>{item.paragraph}</p>
-                </div>
-              ))}
-          </div>
-        ))}
-      </div>
+            <img src={article.imgSrc[0]} alt="Article" />
+          </Link>
+        </div>
+      ))}
+    </div>
   );
 };
 
 export default ArticleList;
+
