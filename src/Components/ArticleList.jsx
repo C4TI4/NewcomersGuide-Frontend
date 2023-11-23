@@ -36,4 +36,4 @@ const ArticleList = () => {
   );
 };
 
-export default ArticleList;
+export default ArticleList
