@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAllArticle } from '../../lib/bdClient';
+import { getAllArticle } from '../lib/bdClient';
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
