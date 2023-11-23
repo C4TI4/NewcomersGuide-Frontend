@@ -4,13 +4,15 @@ import { NextUIProvider } from '@nextui-org/react';
 import App from './App.jsx';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-const isDarkMode = true;
+import { ThemeContext } from './context/ThemeContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <NextUIProvider dark={isDarkMode.toString()}>
-        <App />
+      <NextUIProvider>
+        <ThemeContext>
+          <App />
+        </ThemeContext>
       </NextUIProvider>
     </BrowserRouter>
   </React.StrictMode>

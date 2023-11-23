@@ -16,18 +16,14 @@ import {
   Avatar,
   Switch,
 } from "@nextui-org/react";
-import { AcmeLogo } from "../assets/Images/AcmeLogo.jsx";
 import { SearchIcon } from "../assets/Images/SearchIcon.jsx";
-import PropTypes from 'prop-types';
-// import { VisuallyHidden, useSwitch } from '@nextui-org/react';
-// import { MoonIcon } from '../assets/Images/MoonIcon'; 
-// import { SunIcon } from '../assets/Images/SunIcon'; 
-import ThemeSwitch from "./ThemeSwitch.jsx";
+import { MoonIcon } from '../assets/Images/MoonIcon'; 
+import { SunIcon } from '../assets/Images/SunIcon';
+import useThemeContext from '../context/ThemeContext';
 
-
-
-export default function NavBar({ isDarkMode, toggleDarkMode }) {
+export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {isDarkMode, toggleDarkMode} = useThemeContext()
 
   const menuItems = [
     "Profile",
@@ -51,14 +47,14 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <AcmeLogo />
+          
           <p className="font-bold text-inherit">Newcomer`s guide</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <AcmeLogo />
+          
           <p className="flex font-bold text-inherit">Newcomer`s Guide</p>
         </NavbarBrand>
 
@@ -68,17 +64,17 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
         <NavbarItem>
         <Dropdown>
           <DropdownTrigger>
-          <Link
-      color="foreground"
-      href="#"
-      onClick={(e) => {
-        e.preventDefault();
-      }}
-    >
-      Unwritten Rules
-    </Link>
+            <Link
+              color="foreground"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Unwritten Rules
+            </Link>
           </DropdownTrigger>
-          <Dropdown.Content>
+          <DropdownMenu>
             {/* Dropdown Items */}
 
             <DropdownItem>
@@ -128,19 +124,19 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
                 Language & Slang
               </Link>
             </DropdownItem>
-          </Dropdown.Content>
+          </DropdownMenu>
         </Dropdown>
 
 
       </NavbarItem>
         <NavbarItem >
-          <Link href="#" aria-current="page">
+          <Link href="#" color="foreground">
             First Steps
           </Link>
         </NavbarItem>
 
         {/*  Interactive map - link to Map page*/}
-        <NavbarItem>
+        <NavbarItem  className="hover:border-solid-black-500">
           <Link color="foreground" href="#">
             Interactive Map
           </Link>
@@ -154,20 +150,20 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
             base: "max-w-full sm:max-w-[10rem] h-10",
             mainWrapper: "h-full",
             input: "text-small",
-            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            inputWrapper: "h-full font-normal text-default-500 bg-default-400/0 dark:bg-default-500/0",
           }}
-          placeholder="Search"
+          label="Search"
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
         />
         {/* Profile Dropdown */}
         <Dropdown placement="bottom-end">
-          <DropdownTrigger>
+          <DropdownTrigger className="hidden sm:block">
             <Avatar
               isBordered
               as="button"
-              className="transition-transform"
+              className="transition-transform sm:hidden"
               color="danger"
               name="Jason Hughes"
               size="sm"
@@ -182,29 +178,31 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key=""></DropdownItem>
+            <DropdownItem key=""></DropdownItem>
+            <DropdownItem key=""></DropdownItem>
+            <DropdownItem key=""></DropdownItem>
             <DropdownItem key="logout" color="danger">
               Log Out
             </DropdownItem>
 
           </DropdownMenu>
         </Dropdown>
+
+
         {/* Dark Mode Toggle */}
         <div className="dark-mode-toggle">
         <Switch
           checked={isDarkMode}
           onChange={toggleDarkMode}
-          render={(props) => (
-            <ThemeSwitch Component={Switch} {...props} isSelected={isDarkMode} />
-          )}
+          startContent={<SunIcon />}
+          endContent={<MoonIcon />}
         />
       </div>
       </NavbarContent>
 
       {/* NavbarMenu */}
+
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
@@ -228,10 +226,4 @@ export default function NavBar({ isDarkMode, toggleDarkMode }) {
     </Navbar>
   );
 }
-
-
-NavBar.propTypes = {
-    isDarkMode: PropTypes.bool.isRequired,
-    toggleDarkMode: PropTypes.func.isRequired,
-  };
   
