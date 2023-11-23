@@ -7,11 +7,11 @@
 Our mission? To make your arrival in Berlin a breeze! Imagine an app that's your personal sidekick, guiding you through German life, from the nitty-gritty laws to the coolest cultural hangouts. 
 Here's our plans:
 
-###[General Trello](https://trello.com/invite/b/P7mgSKVl/ATTI772b07cb2d62ef70eff07f4187300cb8CB6975AF/wbs-final-project)
-###[Frontend Trello](https://trello.com/b/Ewvbi7Uh/frontend-space)
-###[Backend Trello](https://trello.com/b/JkEvkx1B/backend-space)
-###[Wireframe](https://whimsical.com/join/3kGBDiXSsmLqzh3PhAtzJb?invite=tnpdudo4)
-###[Business Plan (Google Doc)](https://docs.google.com/document/d/1aX79et6XSriKgvjsXesp3BfabkXMsWiOfjm4JvBgvTY/edit#heading=h.haq3joiz8vnz)
+### [General Trello](https://trello.com/invite/b/P7mgSKVl/ATTI772b07cb2d62ef70eff07f4187300cb8CB6975AF/wbs-final-project)
+### [Frontend Trello](https://trello.com/b/Ewvbi7Uh/frontend-space)
+### [Backend Trello](https://trello.com/b/JkEvkx1B/backend-space)
+### [Wireframe](https://whimsical.com/join/3kGBDiXSsmLqzh3PhAtzJb?invite=tnpdudo4)
+### [Business Plan (Google Doc)](https://docs.google.com/document/d/1aX79et6XSriKgvjsXesp3BfabkXMsWiOfjm4JvBgvTY/edit#heading=h.haq3joiz8vnz)
 [Sprint 1 presentation](https://www.canva.com/design/DAF0bR4IpQQ/oM7YteoWXHdvOemjErTZSA/edit?ui=eyJHIjp7fX0)
 
 
