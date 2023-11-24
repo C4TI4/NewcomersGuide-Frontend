@@ -1,6 +1,5 @@
 import { FaFacebookF, FaTwitter, FaYoutube, FaPinterest } from "react-icons/fa";
 
-
 export default function Footer() {
   const iconsTab = [
     { icon: <FaFacebookF /> },
@@ -11,13 +10,14 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white">
+      <footer className="flex mt-16 md:m-16 ">
         <div className="container mx-auto py-[10rem]">
           <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] text-left">
             {/* Logo and Description */}
+
             <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
               <img
-                src="../assets/Images/Newcomers-Logo.png"
+                src="/src/assets/Images/Newcomers-Logo.png"
                 alt="footer_logo"
                 className="w-[18rem]"
               />
@@ -26,7 +26,9 @@ export default function Footer() {
                 getting started in a new place. Discover valuable insights and
                 information to make your transition smoother.
               </p>
+
               {/* Social Icons */}
+
               <div className="flex gap-7 text-[18px] text-[#646464] justify-center md:justify-start">
                 {iconsTab.map(({ icon }, index) => (
                   <div
@@ -38,6 +40,7 @@ export default function Footer() {
                 ))}
               </div>
               {/* Copyright and Credits */}
+
               <p className="text-[16px] font-medium text-[#646464]">
                 Privacy Policy | © {new Date().getFullYear()} Newcomer`s Guide
                 <br />
