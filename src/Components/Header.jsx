@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Button } from "@nextui-org/react";
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    "/public/images/camilla-bundgaard-7nbP_kHaaGo-unsplash.jpg",
-    "/public/images/matt-mutlu-NdNyBOji8MQ-unsplash.jpg",
-    "/public/images/philippe-oursel-bcJDHKVUHNs-unsplash.jpg",
+    "/public/images/marcus-lenk-scPq1QpSTLs-unsplash.jpg",
+    "/public/images/markus-spiske-0yuH4tIQIYY-unsplash.jpg",
+    "public/images/tiago-aleixo-1GpHwkQkrT0-unsplash.jpg",
   ];
 
   const nextSlide = () => {
@@ -22,8 +23,6 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full h-96">
-      {" "}
-      {/* Adjusted height here */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -33,18 +32,24 @@ const Carousel = () => {
           style={{ backgroundImage: `url(${slide})` }}
         />
       ))}
-      <button
-        className="absolute top-1/2 left-8 text-white bg-black bg-opacity-50 rounded-full p-2"
+      <Button
+        auto
+        ghost
+        color="primary"
+        className="absolute top-1/2 left-8"
         onClick={prevSlide}
       >
         &#10094;
-      </button>
-      <button
-        className="absolute top-1/2 right-8 text-white bg-black bg-opacity-50 rounded-full p-2"
+      </Button>
+      <Button
+        auto
+        ghost
+        color="primary"
+        className="absolute top-1/2 right-8"
         onClick={nextSlide}
       >
         &#10095;
-      </button>
+      </Button>
     </div>
   );
 };

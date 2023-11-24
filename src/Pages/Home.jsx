@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { NextUIProvider } from '@nextui-org/react';
-import NavBar from '../Components/NavBar';
-import Footer from '../Components/Footer';
+import React, { useState } from "react";
+import { NextUIProvider } from "@nextui-org/react";
+import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
+import LookingSomething from "../Components/LookingSomething";
+import Footer from "../Components/Footer";
+import CultureFaqs from "../Components/CultureFaqs"; // Import CultureFaqs
+
 export default function Home() {
-  const [count, setCount] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -12,28 +15,13 @@ export default function Home() {
 
   return (
     <NextUIProvider dark={isDarkMode.toString()}>
-    <div className={`app-container ${isDarkMode ? 'dark' : ''}`}>
-    <div>
-        {/* pass isDarkMode and toggleDarkMode as props to NavBar */}
+      <div className={`app-container ${isDarkMode ? "dark" : ""}`}>
         <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-    </div>
-    <div>
-        <header>
-          <h1>Header</h1>
-        </header>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            Count is {count}
-          </button>
-          <p>Edit <code>src/App.jsx</code> 3</p>
-        </div>
-        <p className="read-the-docs">Let`s get building ladiessss :D</p>
-        <div className="dark-mode-toggle">
-        
-        </div>
+        <Header />
+        <CultureFaqs /> {/* Add CultureFaqs component */}
+        <LookingSomething />
+        <Footer />
       </div>
-      <Footer />
-</div>
     </NextUIProvider>
   );
 }
