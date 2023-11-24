@@ -1,5 +1,5 @@
 import React from "react";
-import { Collapse } from "@nextui-org/react";
+import { Accordion } from "@nextui-org/react";
 
 const CultureFaqs = () => {
   const faqs = [
@@ -29,19 +29,18 @@ const CultureFaqs = () => {
       answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     },
   ];
-
   return (
     <div className="m-5 font-sans">
       <h2 className="text-center text-2xl font-bold mb-8 text-gray-800">
         CULTURE FAQS & TIPS
       </h2>
-      <div className="grid md:grid-cols-2 gap-4">
+      <Accordion>
         {faqs.map((faq, index) => (
-          <Collapse key={index} title={faq.question} shadow>
+          <Accordion.Item key={index} title={faq.question}>
             <p className="text-sm text-gray-600">{faq.answer}</p>
-          </Collapse>
+          </Accordion.Item>
         ))}
-      </div>
+      </Accordion>
     </div>
   );
 };

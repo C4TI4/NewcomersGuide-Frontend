@@ -4,9 +4,9 @@ import { Button } from "@nextui-org/react";
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    "/public/images/marcus-lenk-scPq1QpSTLs-unsplash.jpg",
-    "/public/images/markus-spiske-0yuH4tIQIYY-unsplash.jpg",
-    "public/images/tiago-aleixo-1GpHwkQkrT0-unsplash.jpg",
+    "/images/marcus-lenk-scPq1QpSTLs-unsplash.jpg",
+    "/images/markus-spiske-0yuH4tIQIYY-unsplash.jpg",
+    "/images/tiago-aleixo-1GpHwkQkrT0-unsplash.jpg",
   ];
 
   const nextSlide = () => {
