@@ -129,6 +129,7 @@ export default function NavBar() {
         </Dropdown>
 
 
+
       </NavbarItem>
         <NavbarItem >
           <Link href="#" color="foreground">
@@ -139,10 +140,11 @@ export default function NavBar() {
         {/*  Interactive map - link to Map page*/}
         <NavbarItem  className="hover:border-solid-black-500">
           <Link color="foreground" href="#">
-            Interactive Map
+            Map
           </Link>
         </NavbarItem>
       </NavbarContent>
+
 
       <NavbarContent as="div" className="items-center" justify="end">
         
