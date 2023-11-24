@@ -3,6 +3,7 @@ import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import ArticleList from "./Components/ArticleList.jsx";
 import SingleArticle from "./Components/SingleArticle.jsx";
+import TranslationPage from "./Pages/TranslationPage";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/article" element={<ArticleList />} />
         <Route path="/article/:id" element={<SingleArticle />} />
+        <Route path="/translate" element={<TranslationPage />} />
       </Route>
     </Routes>
   );

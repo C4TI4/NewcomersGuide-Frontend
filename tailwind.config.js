@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         danger: '#e72788',
+        // foreground: '#6366f1',
       }
     },
   },

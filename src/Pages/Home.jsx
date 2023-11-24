@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import NavBar from "../Components/NavBar";
@@ -14,6 +15,10 @@ export default function Home() {
     setIsDarkMode((prev) => !prev);
   };
 
+=======
+import ArticleList from '../Components/ArticleList';
+export default function Home() {  
+>>>>>>> d427447bf6982480573ceb402740997cbda52875
   return (
     <NextUIProvider dark={isDarkMode.toString()}>
       <div className={`app-container ${isDarkMode ? "dark" : ""}`}>
@@ -24,6 +29,13 @@ export default function Home() {
         <LookingSomething />
         <Footer />
       </div>
+<<<<<<< HEAD
     </NextUIProvider>
+=======
+      <ArticleList />
+      <p className="read-the-docs">Let`s get building ladies :D</p>
+      <div className="dark-mode-toggle"></div>
+    </>
+>>>>>>> d427447bf6982480573ceb402740997cbda52875
   );
 }
