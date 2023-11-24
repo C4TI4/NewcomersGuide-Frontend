@@ -107,6 +107,7 @@ export default function NavBar() {
                 Clubs & Q`s
               </Link>
             </DropdownItem>
+
             <DropdownItem>
               <Link color="foreground" href="/articles-page">
                 At The Supermarket
@@ -144,6 +145,7 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
+        
         {/* Search Input */}
         <Input
           classNames={{
@@ -152,7 +154,7 @@ export default function NavBar() {
             input: "text-small",
             inputWrapper: "h-full font-normal text-default-500 bg-default-400/0 dark:bg-default-500/0",
           }}
-          label="Search"
+          label=""
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
@@ -170,7 +172,8 @@ export default function NavBar() {
               src="https://i.pravatar.cc/150"
             />
           </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
+          <DropdownMenu aria-label="Profile Actions" variant="flat" theme={isDarkMode ? 'dark-mode' : 'light-mode'}>
+
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
@@ -178,13 +181,7 @@ export default function NavBar() {
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key=""></DropdownItem>
-            <DropdownItem key=""></DropdownItem>
-            <DropdownItem key=""></DropdownItem>
-            <DropdownItem key=""></DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
+            <DropdownItem key="logout" color="danger">Log Out</DropdownItem>
 
           </DropdownMenu>
         </Dropdown>
