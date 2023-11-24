@@ -8,8 +8,8 @@ export default function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />       
+        <Route path="/translate" element={<TranslationPage/>} />
       </Route>
-      <Route path="/translate" element={<TranslationPage/>} />
     </Routes>
   );
 }
