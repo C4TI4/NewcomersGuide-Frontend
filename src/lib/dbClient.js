@@ -24,8 +24,7 @@ const getSingleArticle = async (id) => {
 
 const getTranslate = async (inputText, target_lang) => {
     try {
-        const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText],
-                      target_lang} );
+        const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText], target_lang} );
         // console.log(allTranslation);
         return allTranslation.data;
     } catch (error) {
