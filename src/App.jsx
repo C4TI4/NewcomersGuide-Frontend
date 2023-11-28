@@ -15,6 +15,7 @@ export default function App() {
         <Route path="/article" element={<Articles />} />
         <Route path="/article/:id" element={<OneArticle />} />
         <Route path="/translate" element={<TranslationPage/>} />
+      </Route>
     </Routes>
   );
 }
