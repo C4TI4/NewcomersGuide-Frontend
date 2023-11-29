@@ -18,7 +18,7 @@ export default function Home() {
       <div className={`app-container ${isDarkMode ? "dark" : ""}`}>
         <Header />
         <HomeButtons />
-        {/* <ArticleList /> */}
+        <ArticleList />
         <CultureFaqs />
         <LookingSomething />
       </div>
