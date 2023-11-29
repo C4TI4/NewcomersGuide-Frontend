@@ -22,7 +22,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full h-96">
+    <div className="relative w-full h-64">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -35,20 +35,18 @@ const Carousel = () => {
       <Button
         auto
         ghost
-        color="primary"
-        className="absolute top-1/2 left-8"
+        className="absolute top-1/2 left-8 text-white bg-[#DC1A82] p-2" // Adjusted styles
         onClick={prevSlide}
       >
-        &#10094;
+        <span style={{ fontSize: "12px" }}>&#10094;</span> {/* Smaller icon */}
       </Button>
       <Button
         auto
         ghost
-        color="primary"
-        className="absolute top-1/2 right-8"
+        className="absolute top-1/2 right-8 text-white bg-[#DC1A82] p-2" // Adjusted styles
         onClick={nextSlide}
       >
-        &#10095;
+        <span style={{ fontSize: "12px" }}>&#10095;</span> {/* Smaller icon */}
       </Button>
     </div>
   );

@@ -1,46 +1,29 @@
 import React from "react";
-import { Accordion } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
 
 const CultureFaqs = () => {
   const faqs = [
     {
       question: "What is the main culture of the region?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      answer:
+        "The main culture of the region is characterized by its rich historical heritage, diverse traditions, and vibrant community life.",
     },
-    {
-      question: "What are popular local dishes?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    },
-    {
-      question: "How do locals celebrate festivals?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    },
-    // Add 3 more FAQs here
-    {
-      question: "What is the local language spoken?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    },
-    {
-      question: "Are there any cultural taboos?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    },
-    {
-      question: "What are common cultural practices?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    },
+    // ... other FAQs
   ];
+
   return (
-    <div className="m-5 font-sans">
-      <h2 className="text-center text-2xl font-bold mb-8 text-gray-800">
-        CULTURE FAQS & TIPS
-      </h2>
-      <Accordion>
-        {faqs.map((faq, index) => (
-          <Accordion.Item key={index} title={faq.question}>
-            <p className="text-sm text-gray-600">{faq.answer}</p>
-          </Accordion.Item>
-        ))}
-      </Accordion>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {faqs.map((faq, index) => (
+        <Card
+          key={index}
+          className="bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <Card.Body>
+            <h3 className="text-lg font-semibold">{faq.question}</h3>
+            <p className="text-gray-600">{faq.answer}</p>
+          </Card.Body>
+        </Card>
+      ))}
     </div>
   );
 };
