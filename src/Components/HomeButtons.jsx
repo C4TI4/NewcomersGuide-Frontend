@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGavel,
@@ -19,7 +19,7 @@ const HomeButtons = () => {
     <div className="p-4 flex justify-center">
       <div className="grid grid-cols-4 gap-4">
         {buttons.map((button, index) => (
-          <div key={index} className="flex flex-col items-center">
+          <Link href='/translate' key={index} className="flex flex-col items-center text-danger">
             <Button
               auto
               bordered
@@ -29,7 +29,7 @@ const HomeButtons = () => {
               <FontAwesomeIcon icon={button.icon} size="3x" />
             </Button>
             <span className="text-xs">{button.label}</span>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

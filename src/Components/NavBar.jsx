@@ -20,10 +20,13 @@ import { SearchIcon } from "../assets/Images/SearchIcon.jsx";
 import { MoonIcon } from '../assets/Images/MoonIcon'; 
 import { SunIcon } from '../assets/Images/SunIcon';
 import useThemeContext from '../context/ThemeContext';
+import {useNavigate} from 'react-router-dom'
 
 export default function NavBar() {
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {isDarkMode, toggleDarkMode} = useThemeContext()
+  const [searchQuery, setSearchQuery] = useState('')
 
   const menuItems = [
     "Profile",
@@ -38,6 +41,15 @@ export default function NavBar() {
     "Log Out",
   ];
 
+  const handleSearch = async (e) => {
+    try {
+      e.preventDefault();
+      navigate(`/search?query=${searchQuery}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} >
       {/* NavbarContent and NavbarBrand */}
@@ -46,17 +58,17 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
-          <Link to="/#">
-          <p className="font-bold text-inherit">Newcomer`s guide</p>
+        <NavbarItem>
+          <Link href="/">
+            <p className="font-bold text-inherit">Newcomer`s guide</p>
           </Link>
-        </NavbarBrand>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <Link to="/#">
-          <p className="flex font-bold text-inherit">Newcomer`s Guide</p>
+          <Link href="/">
+            <p className="flex font-bold text-inherit hover:cursor-pointer">Newcomer`s Guide</p>
           </Link>
         </NavbarBrand>
 
@@ -68,10 +80,7 @@ export default function NavBar() {
           <DropdownTrigger>
             <Link
               color="foreground"
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
+              href="/article"
             >
               Unwritten Rules
             </Link>
@@ -151,18 +160,22 @@ export default function NavBar() {
       <NavbarContent as="div" className="items-center" justify="end">
         
         {/* Search Input */}
-        <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper: "h-full font-normal text-default-500 bg-default-400/0 dark:bg-default-500/0",
-          }}
-          label=""
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        />
+        <form onSubmit={handleSearch}>
+          <Input
+            classNames={{
+              base: "max-w-full sm:max-w-[10rem] h-10",
+              mainWrapper: "h-full",
+              input: "text-small",
+              inputWrapper: "h-full font-normal text-default-500 bg-default-400/0 dark:bg-default-500/0",
+            }}
+            label=""
+            size="sm"
+            startContent={<SearchIcon size={18} />}
+            type="search"
+            value={searchQuery}
+            onValueChange={setSearchQuery}
+            />
+        </form>
         {/* Profile Dropdown */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger className="hidden sm:block">
