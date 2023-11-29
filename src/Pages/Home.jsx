@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import Header from "../Components/Header";
 import HomeButtons from "../Components/HomeButtons";

@@ -47,15 +47,17 @@ export default function NavBar() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          
+          <Link to="/#">
           <p className="font-bold text-inherit">Newcomer`s guide</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          
+          <Link to="/#">
           <p className="flex font-bold text-inherit">Newcomer`s Guide</p>
+          </Link>
         </NavbarBrand>
 
 

@@ -23,17 +23,17 @@ useEffect(() => {
 
 return (
     <>
-      <div className="relative w-full h-30vh overflow-hidden mb-2.5">
+    <div className="relative w-full h-30vh overflow-hidden mb-2.5">
         <img
-          src="https://images.pexels.com/photos/417023/pexels-photo-417023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Berlin street-art"
-          className="w-full max-h-80 object-cover"
+        src="https://images.pexels.com/photos/417023/pexels-photo-417023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="Berlin street-art"
+        className="w-full max-h-80 object-cover"
         />
                         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-25" />
         <div className="absolute inset-0 flex justify-center items-center text-center">
-          <h3 className="font-bold text-xl text-white z-10">YOU MIGHT LIKE TO READ</h3>
+        <h3 className="font-bold text-xl text-white z-10">YOU MIGHT LIKE TO READ</h3>
         </div>
-      </div>
+    </div>
     <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
         {articleList.map((article) => (
