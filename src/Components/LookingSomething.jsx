@@ -12,14 +12,19 @@ const LookingSomething = () => {
     >
       <div className="text-center">
         <h2 className="text-3xl text-white mb-4 font-bold">
-          THE BEST OF NATIONAL GEOGRAPHIC DELIVERED TO YOUR INBOX
+          DISCOVER YOUR NEW LIFE IN GERMANY
         </h2>
         <p className="text-xl text-white mb-6">
-          Sign up for more inspiring photos, stories, and special offers from
-          National Geographic.
+          Join our community and get the latest updates on laws, culture, and
+          events in Germany. Tailored for newcomers like you.
         </p>
-        <Button color="primary" auto ghost>
-          Sign Up
+        <Button
+          color="primary"
+          auto
+          ghost
+          style={{ backgroundColor: "#DC1A82" }}
+        >
+          Join Now
         </Button>
       </div>
     </div>
