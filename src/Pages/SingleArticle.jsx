@@ -1,13 +1,13 @@
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
-import SingleArticle from '../Components/SingleArticle';
+import OneArt from '../Components/OneArt';
 
 
 const OneArticle = () => {
 return (
     <>
     <NavBar />
-    <SingleArticle />
+    <OneArt />
     <Footer/>
     </>
 )

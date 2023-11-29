@@ -1,13 +1,13 @@
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
-import ArticleList from '../Components/ArticleList';
+import AllArt from '../Components/AllArt';
 
 
 const Articles = () => {
 return (
     <>
     <NavBar />
-    <ArticleList />
+    <AllArt />
     <Footer/>
     </>
 )
