@@ -41,26 +41,6 @@ const getTranslateDocument = async (document) => {
     }
 };
 
-// const TranslationForm = () => {
-//     const [inputText, setInputText] = useState('');
-//     const [translatedText, setTranslatedText] = useState('');
-  
-//     const handleTranslate = async () => {
-//       try {
-//         const response = await axios.post('http://YOUR_BACKEND_IP:5000/translate', {
-//           text: inputText,
-//           targetLanguage: 'TARGET_LANGUAGE_CODE',
-//         });
-  
-//         setTranslatedText(response.data.translation);
-//       } catch (error) {
-//         console.error('Translation error:', error);
-//       }
-//     };
-  
-
-
-
 export {
     getAllArticle,
     getSingleArticle,

@@ -22,6 +22,8 @@ const getSingleArticle = async (id) => {
     }
 }
 
+
+
 export {
     getAllArticle,
     getSingleArticle
