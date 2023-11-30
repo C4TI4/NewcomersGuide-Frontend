@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { getTranslateText, getTranslateDocument } from "../lib/dbClient";
+import { getTranslateText, getTranslateDocument, getLanguages } from "../lib/dbClient";
 import { Textarea, Button } from "@nextui-org/react";
+import LangDropdown from '../Components/LangDropdown';
 
 const TranslationPage = () => {
   const [inputText, setInputText] = useState("");
@@ -19,6 +20,8 @@ const TranslationPage = () => {
   const [translatedDoc, setTranslatedDoc] = useState(null);
   const [objectURL, setObjectURL] = useState(null)
   const downloadLink = useRef(null)
+  // state for all supported langs
+  const [supportedLanguages, setSupportedLanguages]=useState([]);
 
   const handleTranslate = async (e) => {
     try {
@@ -59,6 +62,15 @@ const TranslationPage = () => {
     }
   }
 
+  const fetchSupportedLanguages=  async ()=> {
+    setSupportedLanguages(await getLanguages());
+    }
+
+  useEffect (()=>{   
+    fetchSupportedLanguages();
+    }, [])
+    console.log({supportedLanguages});
+
   useEffect(() => {
     if (!objectURL) return
     
@@ -92,7 +104,10 @@ const TranslationPage = () => {
             </g>
           </svg>
         </button>
-        <p className="text-xl">{languageSelection.targetLn.name}</p>
+        {/* <p className="text-xl">{languageSelection.targetLn.name}</p> */}
+
+        {/* languages came from LangDropdown */}
+        { supportedLanguages.length>0 && <LangDropdown languages={supportedLanguages} />} 
       </div>
         <form onSubmit={translateDocument} className='mb-4 text-center'>
           <input type='file' name='translateDocument' onChange={handleDocument} />

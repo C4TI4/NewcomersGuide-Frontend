@@ -41,9 +41,16 @@ const getTranslateText = async (inputText, target_lang) => {
     }
 };
 
-   {/* <form action="/profile" method="post" enctype="multipart/form-data">
-  <input type="file" name="filename" />
-</form> */}
+const getLanguages = async () => {
+    try {
+        const allLanguages = await axios(`${backend}/translate/languages`);
+        console.log({allLanguages});
+        return allLanguages.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+   
 // to send/post uploaded file to backend
 const getTranslateDocument = async (document) => {
     try {
@@ -62,7 +69,8 @@ export {
     getSingleArticle,
     getTranslateText,
     getTranslateDocument,
-    getSearchedContent
+    getSearchedContent,
+    getLanguages
 }
 
 
