@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getTranslateText, getTranslateDocument } from "../lib/dbClient";
 import { Textarea, Button } from "@nextui-org/react";
 
@@ -17,6 +17,8 @@ const TranslationPage = () => {
   })
   const [document, setDocument] = useState(null);
   const [translatedDoc, setTranslatedDoc] = useState(null);
+  const [objectURL, setObjectURL] = useState(null)
+  const downloadLink = useRef(null)
 
   const handleTranslate = async (e) => {
     try {
@@ -49,10 +51,21 @@ const TranslationPage = () => {
       if (!document) return alert('Please select a document for submission');
       const translatedDocument = await getTranslateDocument(document);
       setTranslatedDoc(translatedDocument)
+      const blob  = new Blob([translatedDocument.translation], {type: document.type})
+      setObjectURL(URL.createObjectURL(blob));
+          
     } catch(err) {
       console.error(err)
     }
   }
+
+  useEffect(() => {
+    if (!objectURL) return
+    
+    downloadLink.current.click();
+    setObjectURL(null)
+
+  }, [objectURL])
 
   return (
     <>
@@ -123,6 +136,8 @@ const TranslationPage = () => {
         </div>
       </div>
     </div>
+    <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}></a>
+
     </>
   );
 };

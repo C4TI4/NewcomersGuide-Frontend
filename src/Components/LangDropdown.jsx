@@ -2,7 +2,7 @@
 // import {animals} from "./data";
 
 // const LangDropdown = () => {
-// //   const placements = [
+//   const placements = [
 //     "inside",
 //     "outside",
 //     "outside-left",
