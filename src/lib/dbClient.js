@@ -22,6 +22,15 @@ const getSingleArticle = async (id) => {
     }
 }
 
+const getSearchedContent = async (query) => {
+    try {
+        const { data } = await axios(`${backend}/search?query=${query}`)
+        return data;
+    } catch (error) {
+        console.error('failed to fetch searched articles from backend')
+    }
+}
+
 const getTranslateText = async (inputText, target_lang) => {
     try {
         const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText], target_lang} );
@@ -45,7 +54,8 @@ export {
     getAllArticle,
     getSingleArticle,
     getTranslateText,
-    getTranslateDocument
+    getTranslateDocument,
+    getSearchedContent
 }
 
 
