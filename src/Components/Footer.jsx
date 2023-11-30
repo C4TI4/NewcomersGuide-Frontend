@@ -10,8 +10,8 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="flex mt-16 md:m-16 ">
-        <div className="container mx-auto py-[10rem]">
+      <footer className="flex mt-5 md:m-16 ">
+        <div className="container mx-auto py-[1rem]">
           <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] text-left">
             
             {/* Logo and Description */}
