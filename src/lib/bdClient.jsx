@@ -22,11 +22,21 @@ const getSingleArticle = async (id) => {
     }
 }
 
+const getSearchedContent = async (query) => {
+    try {
+        const { data } = await axios(`${backend}/search?query=${query}`)
+        return data;
+    } catch (error) {
+        console.error('failed to fetch searched articles from backend')
+    }
+}
+
 
 
 export {
     getAllArticle,
-    getSingleArticle
+    getSingleArticle,
+    getSearchedContent
 }
 
 
