@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getAllArticle } from '../lib/bdClient';
+import { getAllArticle } from '../lib/dbClient';
 import {Card, CardHeader, Image } from "@nextui-org/react";
 
 export default function AllArt() {
