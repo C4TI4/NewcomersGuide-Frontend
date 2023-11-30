@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/article/:id" element={<SingleArticle />} />
         <Route path="/translate" element={<TranslationPage />} />
         <Route path="/InteractiveMap" element={<InteractiveMap />} />
-        <Route path="*" component={<NotFound/>} /> 
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
