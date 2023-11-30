@@ -1,7 +1,7 @@
 import { Card, CardHeader, Image, Button, CardBody } from "@nextui-org/react";
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getSingleArticle } from '../lib/bdClient';
+import { getSingleArticle } from '../lib/dbClient';
 
 const OneArt = () => {
 const { id } = useParams();
