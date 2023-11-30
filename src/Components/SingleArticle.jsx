@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getSingleArticle } from '../lib/bdClient.jsx';
+import { getSingleArticle } from '../lib/dbClient';
 import { useNavigate } from 'react-router-dom';
-
-
 
 const SingleArticle = () => {
   const { id } = useParams();

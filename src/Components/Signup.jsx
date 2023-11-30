@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Input, Button, Card, Link } from '@nextui-org/react';
-import { createUser } from '../lib/bdClient';
+import { createUser } from '../lib/dbClient';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
@@ -51,7 +51,7 @@ const SignUp = () => {
             className='my-8'
           />
           <p className='text-right text-sm my-4'>Already have an account? <Link onClick={handleNavigate} className='text-sm cursor-pointer'> Login here</Link></p>
-          <Button color="primary" className='my-4 px-8' type="submit" block>
+          <Button color="danger" className='my-4 px-8' type="submit" block>
             Sign Up
           </Button>
         </form>

@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Input, Button, Card, Link } from '@nextui-org/react';
-import { loginUser } from '../lib/bdClient';
+import { loginUser } from '../lib/dbClient';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
