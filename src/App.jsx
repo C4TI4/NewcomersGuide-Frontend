@@ -5,7 +5,7 @@ import TranslationPage from "./Pages/TranslationPage";
 import SearchResults from "./Pages/SearchResults";
 import Articles from "./Pages/Articles";
 import SingleArticle from "./Pages/SingleArticle";
-
+import InteractiveMap from "./Pages/InteractiveMap";
 export default function App() {
   return (
     <Routes>
@@ -15,6 +15,7 @@ export default function App() {
         <Route path="/article" element={<Articles />} />
         <Route path="/article/:id" element={<SingleArticle />} />
         <Route path="/translate" element={<TranslationPage />} />
+        <Route path="/InteractiveMap" element={<InteractiveMap />} />
       </Route>
     </Routes>
   );

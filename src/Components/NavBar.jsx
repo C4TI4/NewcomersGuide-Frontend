@@ -147,7 +147,7 @@ export default function NavBar() {
 
         {/*  Interactive map - link to Map page*/}
         <NavbarItem  className="hover:border-solid-black-500">
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/InteractiveMap">
             Map
           </Link>
         </NavbarItem>
