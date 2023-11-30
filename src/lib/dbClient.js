@@ -22,11 +22,20 @@ const getSingleArticle = async (id) => {
     }
 }
 
-const getTranslate = async (inputText, target_lang) => {
+const getTranslateText = async (inputText, target_lang) => {
     try {
         const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText], target_lang} );
         // console.log(allTranslation);
         return allTranslation.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const getTranslateDocument = async (document) => {
+    try {
+        const sendDocument = await axios.post(`${backend}/translate/document`, document, { headers: {'Content-type': 'multipart/form-data'} } );
+        return sendDocument.data;
     } catch (error) {
         console.error(error);
     }
@@ -55,7 +64,8 @@ const getTranslate = async (inputText, target_lang) => {
 export {
     getAllArticle,
     getSingleArticle,
-    getTranslate 
+    getTranslateText,
+    getTranslateDocument
 }
 
 

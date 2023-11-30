@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getTranslate } from "../lib/dbClient";
-import {Textarea, Button} from "@nextui-org/react";
+import { getTranslateText, getTranslateDocument } from "../lib/dbClient";
+import { Textarea, Button } from "@nextui-org/react";
 
 const TranslationPage = () => {
   const [inputText, setInputText] = useState('');
@@ -15,11 +15,13 @@ const TranslationPage = () => {
       code: 'EN'
     }
   })
+  const [document, setDocument] = useState(null);
+  const [translatedDoc, setTranslatedDoc] = useState(null);
 
   const handleTranslate = async (e) => {
     try {
       if (e) e.preventDefault();
-      const { translations } = await getTranslate(inputText, languageSelection.targetLn.code);
+      const { translations } = await getTranslateText(inputText, languageSelection.targetLn.code);
       setTranslatedText(translations[0]);
       console.log(translations)
     } catch (error) {
@@ -34,7 +36,23 @@ const TranslationPage = () => {
     handleTranslate()
   }
 
+  const handleDocument = (e) => {
+    setDocument(e.target.files[0])
+  }
+
+  const translateDocument = async (e) => {
+    try {
+      e.preventDefault();
+      if (!document) return alert('Please select a document for submission');
+      const translatedDocument = await getTranslateDocument(document);
+      setTranslatedDoc(translatedDocument)
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
   return (
+    <>
     <div className='h-[50vh]'>
       <div className='flex items-center gap-4 justify-center mt-12 mb-4'>
         <p className='text-xl'>{languageSelection.originLn.name}</p>
@@ -54,30 +72,39 @@ const TranslationPage = () => {
         </button>
         <p className='text-xl'>{languageSelection.targetLn.name}</p>
       </div>
-      <div className='flex gap-4 w-1/2 mx-auto justify-between'>
-        <form className='w-1/2' onSubmit={(e) => handleTranslate(e)}>
+        <form onSubmit={translateDocument} className='mb-4 text-center'>
+          <input type='file' name='translateDocument' onChange={handleDocument} />
+          <button><Button>Translate Document</Button></button>
+        </form>
+      
+      <div className='flex flex-wrap md:flex-nowrap gap-4 w-full md:w-3/4 mx-auto  justify-center'>
+      {/* <form action="/profile" method="post" enctype="multipart/form-data">
+  <input type="file" name="filename" />
+</form> */}
+        <form className=' w-full md:w-1/2 relative' onSubmit={(e) => handleTranslate(e)}>
           <Textarea
             label='Input your text'
             classNames={{
-              input: "resize-y min-h-[10em]",
+              input: "resize-y min-h-[10em] md:min-h-[15em]",
             }}
             disableAnimation
             disableAutosize
             variant='bordered'
             value={inputText}
+            // minRows={12}
             onValueChange={setInputText}
             required
             maxLength={1000}
             />
-          <button className='mt-2 block ml-auto'>
+          <button className='block absolute bottom-1 right-1'>
             <Button>Translate</Button>        
           </button>
         </form>
-        <div className='w-1/2'>
+        <div className=' w-full md:w-1/2'>
           <Textarea 
             label="Translated Text"
             classNames={{
-              input: "resize-y min-h-[10em]",
+              input: "resize-y min-h-[10em] md:min-h-[15em]",
             }}
             disableAutosize
             variant='bordered' 
@@ -87,6 +114,7 @@ const TranslationPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
