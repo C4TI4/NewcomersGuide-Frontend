@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import TranslationPage from "./Pages/TranslationPage";
 import Articles from "./Pages/Articles";
 import SingleArticle from "./Pages/SingleArticle";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from './Pages/RegisterPage';
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
       <Route path="/article" element={<Articles />} />
       <Route path="/article/:id" element={<SingleArticle />} />
       <Route path="/translate" element={<TranslationPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<RegisterPage />} />
     </Routes>
   );
 }
