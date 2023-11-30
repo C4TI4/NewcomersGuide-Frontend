@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input, Button, Card } from '@nextui-org/react';
+import { Input, Button, Card, Link } from '@nextui-org/react';
 import { createUser } from '../lib/bdClient';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,12 +13,14 @@ const SignUp = () => {
     e.preventDefault();
     try {
       await createUser({ userName, email, password });
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('SignUp Error:', error);
     }
   };
-
+  const handleNavigate = () => {
+    navigate('/login');
+  };
   return (
     <div className='flex justify-center items-center h-screen'>
       <Card shadow style={{ width: '400px', height: '500px', padding: '20px' }}>
@@ -48,6 +50,7 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             className='my-8'
           />
+          <p className='text-right text-sm my-4'>Already have an account? <Link onClick={handleNavigate} className='text-sm cursor-pointer'> Login here</Link></p>
           <Button color="primary" className='my-4 px-8' type="submit" block>
             Sign Up
           </Button>

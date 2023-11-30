@@ -14,7 +14,7 @@ const Login = () => {
     try {
       const userData = await loginUser(email, password);
       console.log('User Data:', userData);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.error('Login Error:', error);
     }
