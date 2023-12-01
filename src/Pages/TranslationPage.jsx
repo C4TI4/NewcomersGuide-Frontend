@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { getTranslateText, getTranslateDocument } from "../lib/dbClient";
+import { useState, useRef, useEffect } from 'react';
+import { getTranslateText, getTranslateDocument, getLanguages } from "../lib/dbClient";
 import { Textarea, Button } from "@nextui-org/react";
+import LangDropdown from '../Components/LangDropdown';
 
 const TranslationPage = () => {
   const [inputText, setInputText] = useState("");
@@ -17,6 +18,10 @@ const TranslationPage = () => {
   })
   const [document, setDocument] = useState(null);
   const [translatedDoc, setTranslatedDoc] = useState(null);
+  const [objectURL, setObjectURL] = useState(null)
+  const downloadLink = useRef(null)
+  // state for all supported langs
+  const [supportedLanguages, setSupportedLanguages]=useState([]);
 
   const handleTranslate = async (e) => {
     try {
@@ -49,10 +54,30 @@ const TranslationPage = () => {
       if (!document) return alert('Please select a document for submission');
       const translatedDocument = await getTranslateDocument(document);
       setTranslatedDoc(translatedDocument)
+      const blob  = new Blob([translatedDocument.translation], {type: document.type})
+      setObjectURL(URL.createObjectURL(blob));
+          
     } catch(err) {
       console.error(err)
     }
   }
+
+  const fetchSupportedLanguages=  async ()=> {
+    setSupportedLanguages(await getLanguages());
+    }
+
+  useEffect (()=>{   
+    fetchSupportedLanguages();
+    }, [])
+    console.log({supportedLanguages});
+
+  useEffect(() => {
+    if (!objectURL) return
+    
+    downloadLink.current.click();
+    setObjectURL(null)
+
+  }, [objectURL])
 
   return (
     <>
@@ -79,7 +104,10 @@ const TranslationPage = () => {
             </g>
           </svg>
         </button>
-        <p className="text-xl">{languageSelection.targetLn.name}</p>
+        {/* <p className="text-xl">{languageSelection.targetLn.name}</p> */}
+
+        {/* languages came from LangDropdown */}
+        { supportedLanguages.length>0 && <LangDropdown languages={supportedLanguages} />} 
       </div>
         <form onSubmit={translateDocument} className='mb-4 text-center'>
           <input type='file' name='translateDocument' onChange={handleDocument} />
@@ -123,6 +151,8 @@ const TranslationPage = () => {
         </div>
       </div>
     </div>
+    <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}></a>
+
     </>
   );
 };
