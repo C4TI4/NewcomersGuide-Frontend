@@ -53,7 +53,7 @@ const TranslationPage = () => {
     try {
       e.preventDefault();
       if (!document) return alert('Please select a document for submission');
-      const translatedDocument = await getTranslateDocument(document);
+      const translatedDocument = await getTranslateDocument(document, languageSelection.targetLn.code);
       setTranslatedDoc(translatedDocument)
       const blob  = new Blob([translatedDocument.translation], {type: document.type})
       setObjectURL(URL.createObjectURL(blob));
@@ -112,9 +112,12 @@ const TranslationPage = () => {
           <input type='file' name='translateDocument' onChange={handleDocument} />
           <button><Button>Translate Document</Button></button> 
           <div className='block mt-4'>
-            <Button>{objectURL && <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}>
-                Download your Translated document
-              </a>}
+            <Button>
+              { objectURL && (
+                  <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}>
+                    Download your Translated document
+                  </a>
+              )}
             </Button>        
             </div>          
         </form>     
@@ -134,8 +137,8 @@ const TranslationPage = () => {
               required
               maxLength={1000}
             />
-            <button className='block absolute bottom-1 right-1 bg-green-800'>
-              <Button>Translate</Button>        
+            <button className='block absolute bottom-1 right-1'>
+              <Button color="secondary">Translate</Button>        
             </button>
           </form>
           <div className=' w-full md:w-1/2'>
