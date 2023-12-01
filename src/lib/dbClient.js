@@ -68,12 +68,12 @@ const getTranslateDocument = async (document) => {
 
 const loginUser = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post(`${backend}/auth/login`, {
         email,
         password,
       });
-      console.log('Login Successful:', response.data);
-      return response.data;
+      console.log('Login Successful:', response.headers.authorization);
+      return response.headers.authorization;
     } catch (error) {
       console.error('Login Error:', error);
       throw new Error('Login failed');
@@ -84,13 +84,22 @@ const loginUser = async (email, password) => {
   const createUser = async (userData) => {
     try {
         const response = await axios.post(`${backend}/auth/register`, userData);
-        console.log('User Created:', response.data);
-        return response.data;
+        console.log('User Created:', response.headers.authorization);
+        return response.headers.authorization;
     } catch (error) {
         console.error('User Creation Error:', error);
-        throw new Error('Failed to create user');
     }
   };
+
+  const sendToken = async (token) => {
+    try {
+        const response = await axios(`${backend}/auth/me`, {headers:{"Authorization": token}});
+        console.log('User retrieved:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Token could not be verify:', error);
+    }
+  }
 
 export {
     getAllArticle,
@@ -100,7 +109,8 @@ export {
     getSearchedContent,
     loginUser,
     createUser,
-    getLanguages
+    getLanguages,
+    sendToken
 }
 
 
