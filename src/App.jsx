@@ -8,6 +8,8 @@ import SingleArticle from "./Pages/SingleArticle";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from './Pages/RegisterPage';
 
+import InteractiveMap from "./Pages/InteractiveMap";
+import NotFound from "./Pages/NotFound";
 export default function App() {
   return (
     <Routes>
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="/translate" element={<TranslationPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<RegisterPage />} />
+        <Route path="/InteractiveMap" element={<InteractiveMap />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
