@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getSearchedContent } from '../lib/bdClient'
+import { getSearchedContent } from '../lib/dbClient'
 import {Link} from '@nextui-org/react'
 
 const SearchResults = () => {

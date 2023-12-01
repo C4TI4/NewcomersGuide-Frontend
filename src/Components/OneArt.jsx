@@ -1,7 +1,7 @@
 import { Card, CardHeader, Image, Button, CardBody } from "@nextui-org/react";
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getSingleArticle } from '../lib/bdClient';
+import { getSingleArticle } from '../lib/dbClient';
 
 const OneArt = () => {
 const { id } = useParams();
@@ -39,11 +39,11 @@ return (
     {singleArticle && (
         <div key={singleArticle._id} className='max-w-screen-xl mx-auto'>
         <Card shadow style={{ width: '100%', maxWidth: '35rem', margin: 'auto' }}>
-            <Image src={singleArticle.imgSrc[0]} alt="Article Image" />
+            <Image src={singleArticle?.imgSrc[0]} alt="Article Image" />
             <CardHeader>
             <h2>{singleArticle.title}</h2>
             </CardHeader>
-            {singleArticle.article && singleArticle.article.map((item, index) => (
+            {singleArticle.article && singleArticle?.article.map((item, index) => (
                 <CardBody
                 key={index}
                 className={index % 2 === 0 ? 'text-left' : 'text-right'}

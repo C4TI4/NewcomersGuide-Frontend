@@ -9,17 +9,17 @@ import {
 
 const HomeButtons = () => {
   const buttons = [
-    { label: "Law Assistance", icon: faGavel },
-    { label: "Course Finder", icon: faSearch },
-    { label: "News", icon: faNewspaper },
-    { label: "Translation Assistance", icon: faLanguage },
+    { label: "Law Assistance", icon: faGavel, path: '/not-found' },
+    { label: "Course Finder", icon: faSearch, path: '/not-found' },
+    { label: "News", icon: faNewspaper, path: '/not-found' },
+    { label: "Translation Assistance", icon: faLanguage, path: '/translate' },
   ];
 
   return (
     <div className="p-4 flex justify-center">
       <div className="grid grid-cols-4 gap-4">
         {buttons.map((button, index) => (
-          <Link href='/translate' key={index} className="flex flex-col items-center text-danger">
+          <Link href={button.path} key={index} className="flex flex-col items-center text-danger">
             <Button
               auto
               bordered
@@ -37,3 +37,4 @@ const HomeButtons = () => {
 };
 
 export default HomeButtons;
+
