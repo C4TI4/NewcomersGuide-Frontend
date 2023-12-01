@@ -22,15 +22,10 @@ Tech Talk 💻
 Wondering what's under the hood? We're using some cutting-edge tech to bring you the best experience:
 
 -   **Frontend Magic:** React, TailwindCSS, NextUI -- making the app sleek, responsive, and oh-so-pleasant to use. 
-(Soon) Live [here](https://newcomers-frontend.onrender.com/)
-In the meantime:
-``` // on your terminal:
-$ npm run dev
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
-```
+Live [here](https://filthy-garment-dog.cyclic.app/)!
+
+
 
 -   **Backend Wonders:** Node.js, MongoDB, Mongoose -- ensuring a robust and secure backend to support all your needs.
 (Soon) Live [here]() 

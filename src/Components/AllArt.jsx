@@ -29,7 +29,7 @@ return (
         alt="Berlin street-art"
         className="w-full max-h-80 object-cover"
         />
-                        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-25" />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-25" />
         <div className="absolute inset-0 flex justify-center items-center text-center">
         <h3 className="font-bold text-xl text-white z-10">YOU MIGHT LIKE TO READ</h3>
         </div>
