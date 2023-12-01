@@ -8,6 +8,9 @@ import SingleArticle from "./Pages/SingleArticle";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+
 import InteractiveMap from "./Pages/InteractiveMap";
 import NotFound from "./Pages/NotFound";
 export default function App() {
