@@ -6,7 +6,7 @@ import {
   faSearch,
   faNewspaper,
   faLanguage,
-  faComments, // This is your forum icon from FontAwesome
+  faComments,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HomeButtons = () => {
@@ -15,7 +15,6 @@ const HomeButtons = () => {
     { label: "Course Finder", icon: faSearch, path: "/course-finder" },
     { label: "News", icon: faNewspaper, path: "/news" },
     { label: "Translation Assistance", icon: faLanguage, path: "/translate" },
-    // Community Forum button added right after Translation Assistance
     { label: "Community Forum", icon: faComments, path: "/forum" },
   ];
 
