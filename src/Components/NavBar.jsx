@@ -31,7 +31,7 @@ export default function NavBar() {
   const menuItems = [
     "Profile",
     "Dashboard",
-    "Unwritten Rules",
+    "Unwritten",
     "Doc Translation",
     "Legal Aid",
     "Language Courses",
@@ -60,15 +60,15 @@ export default function NavBar() {
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarItem>
           <Link href="/">
-            <p className="font-bold text-inherit">Newcomer`s guide</p>
+            <p className="font-bold text-danger">Newcomer`s guide</p>
           </Link>
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-4 text-danger" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <p className="flex font-bold text-inherit hover:cursor-pointer">Newcomer`s Guide</p>
+            <p className="flex font-bold hover:cursor-pointer text-danger">Newcomer`s Guide</p>
           </Link>
         </NavbarBrand>
 
@@ -77,19 +77,16 @@ export default function NavBar() {
       
         <NavbarItem>
         <Dropdown>
-          <DropdownTrigger>
-            <Link
-              color="foreground"
-              href="/article"
-            >
+          <DropdownTrigger className="text-foreground">
+            
               Unwritten Rules
-            </Link>
+            
           </DropdownTrigger>
           <DropdownMenu>
             {/* Dropdown Items */}
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="/article">
                 Clothing & Style
               </Link>
             </DropdownItem>
@@ -120,7 +117,7 @@ export default function NavBar() {
             </DropdownItem>
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="/article/655de42a0304ba04a95df2a3">
                 At The Supermarket
               </Link>
             </DropdownItem>
@@ -143,14 +140,14 @@ export default function NavBar() {
 
       </NavbarItem>
         <NavbarItem >
-          <Link href="#" color="foreground">
+          <Link href="/article" color="foreground">
             First Steps
           </Link>
         </NavbarItem>
 
         {/*  Interactive map - link to Map page*/}
         <NavbarItem  className="hover:border-solid-black-500">
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/InteractiveMap">
             Map
           </Link>
         </NavbarItem>
@@ -223,8 +220,8 @@ export default function NavBar() {
             <Link
               className="w-full"
               color={
-                index === 2
-                  ? "warning"
+                index === 0
+                  ? "foreground"
                   : index === menuItems.length - 1
                   ? "danger"
                   : "foreground"
