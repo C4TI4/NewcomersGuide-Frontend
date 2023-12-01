@@ -1,71 +1,81 @@
 import React, { useState } from "react";
 
-const FaqItem = ({ title, content }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <li className="bg-gradient-to-r from-red-500 to-red-700 rounded-lg my-2 shadow-lg">
-      <h2
-        onClick={toggle}
-        className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer rounded-lg"
-      >
-        <span>{title}</span>
-        <svg
-          className={`fill-current text-white h-6 w-6 transform transition-transform duration-500 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          viewBox="0 0 20 20"
-        >
-          {/* SVG path here */}
-        </svg>
-      </h2>
-      <div
-        style={{ maxHeight: isOpen ? "1000px" : "0" }}
-        className="border-l-2 border-red-800 overflow-hidden transition-all duration-500 rounded-b-lg"
-      >
-        <p className="p-3 text-white">{content}</p>
-      </div>
-    </li>
-  );
-};
-
 const Faqs = () => {
-  const faqsLeft = [
-    // ... (FAQs content)
-  ];
+  const [openTab, setOpenTab] = useState(null);
 
-  const faqsRight = [
-    // ... (FAQs content)
+  const toggleTab = (index) => {
+    setOpenTab(openTab === index ? null : index);
+  };
+  const faqData = [
+    {
+      question: "What is the Newcomer's Guide: Germany Edition?",
+      answer:
+        "This is a comprehensive mobile application designed to assist newcomers to Germany by providing user-friendly guides on laws, news, language courses, cultural integration, and much more, all tailored to make the transition smoother.",
+    },
+    {
+      question: "How can the Law Guide help me understand German laws?",
+      answer:
+        "Our Law Guide offers simplified explanations of German laws, enabling users to understand their rights and obligations in a straightforward manner, which is especially helpful for those who are new to the legal system of Germany.",
+    },
+    {
+      question: "Can I find German language courses through the app?",
+      answer:
+        "Yes, our Language Course Finder assists users in discovering German language courses that best fit their needs, taking into account various factors such as proficiency level and learning style.",
+    },
+    {
+      question: "Does the app offer assistance with official documents?",
+      answer:
+        "Absolutely. Our AI Document Assistant empowers users by simplifying the process of creating official documents and applications, making bureaucratic tasks less daunting.",
+    },
+    {
+      question: "How does the Community Forum benefit users?",
+      answer:
+        "The Community Forum is a supportive space where users can connect, ask questions, and share experiences, fostering a sense of community and belonging among newcomers.",
+    },
+    {
+      question: "Is there offline access available for essential information?",
+      answer:
+        "Critical information within the app is available even without an internet connection, ensuring that users have access to essential guides and services at all times.",
+    },
   ];
-
   return (
-    <main className="p-5 bg-light-blue">
-      <div className="flex flex-wrap justify-center items-start my-2">
-        <div className="w-full text-center mb-5">
-          <h1 className="text-3xl font-bold text-vnet-blue">
-            Frequently Asked Questions
-          </h1>
-        </div>
-        <div className="w-full md:w-1/3 p-2">
-          <ul className="flex flex-col">
-            {faqsLeft.map((faq, index) => (
-              <FaqItem key={index} title={faq.question} content={faq.answer} />
-            ))}
-          </ul>
-        </div>
-        <div className="w-full md:w-1/3 p-2">
-          <ul className="flex flex-col">
-            {faqsRight.map((faq, index) => (
-              <FaqItem key={index} title={faq.question} content={faq.answer} />
-            ))}
-          </ul>
+    <div
+      className="max-w-4xl mx-auto p-6 shadow-lg rounded-lg"
+      style={{
+        backgroundImage:
+          "url('public/images/claudio-schwarz-TScGhJM716g-unsplash.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="bg-white bg-opacity-90 p-6 rounded-lg">
+        <h2 className="text-3xl font-semibold mb-8 text-center text-gray-800">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          {faqData.map((faq, index) => (
+            <div key={index} className="bg-gray-100 rounded-lg overflow-hidden">
+              <h3
+                onClick={() => toggleTab(index)}
+                className="faq-question cursor-pointer p-4 text-lg text-gray-700 hover:bg-gray-200 flex justify-between items-center font-medium"
+              >
+                {faq.question}
+                <span className="text-gray-400">
+                  {openTab === index ? "-" : "+"}
+                </span>
+              </h3>
+              <div
+                className={`faq-answer transition-max-height duration-500 ease-in-out ${
+                  openTab === index ? "max-h-96 p-4" : "max-h-0"
+                }`}
+              >
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
