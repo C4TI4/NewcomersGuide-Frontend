@@ -41,9 +41,23 @@ const getTranslateText = async (inputText, target_lang) => {
     }
 };
 
+const getLanguages = async () => {
+    try {
+        const allLanguages = await axios(`${backend}/translate/languages`);
+        console.log({allLanguages});
+        return allLanguages.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+   
+// to send/post uploaded file to backend
 const getTranslateDocument = async (document) => {
     try {
-        const sendDocument = await axios.post(`${backend}/translate/document`, document, { headers: {'Content-type': 'multipart/form-data'} } );
+        const formData = new FormData();
+        formData.append("translateDocument", document)
+        const sendDocument = await axios.post(`${backend}/translate/document`, formData, { headers: {'Content-type': 'multipart/form-data'} } );
+        console.log(sendDocument)
         return sendDocument.data;
     } catch (error) {
         console.error(error);
@@ -55,7 +69,8 @@ export {
     getSingleArticle,
     getTranslateText,
     getTranslateDocument,
-    getSearchedContent
+    getSearchedContent,
+    getLanguages
 }
 
 
