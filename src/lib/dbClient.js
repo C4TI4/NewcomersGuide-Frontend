@@ -53,10 +53,11 @@ const getLanguages = async () => {
 };
    
 // to send/post uploaded file to backend
-const getTranslateDocument = async (document) => {
+const getTranslateDocument = async (document, targetLang) => {
     try {
         const formData = new FormData();
         formData.append("translateDocument", document)
+        formData.append("target_lang", targetLang)
         const sendDocument = await axios.post(`${backend}/translate/document`, formData, { headers: {'Content-type': 'multipart/form-data'} } );
         console.log(sendDocument)
         return sendDocument.data;
