@@ -101,6 +101,16 @@ const loginUser = async (email, password) => {
     }
   }
 
+  const getAllLaws = async () => {
+    try {
+      const response = await axios.get(`${backend}/law/`); 
+      return response.data;
+    } catch (error) {
+      throw new Error('Error fetching laws:', error);
+    }
+  };
+
+
 export {
     getAllArticle,
     getSingleArticle,
@@ -110,7 +120,8 @@ export {
     loginUser,
     createUser,
     getLanguages,
-    sendToken
+    sendToken,
+    getAllLaws
 }
 
 

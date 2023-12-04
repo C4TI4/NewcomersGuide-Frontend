@@ -7,7 +7,7 @@ import Articles from "./Pages/Articles";
 import SingleArticle from "./Pages/SingleArticle";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from './Pages/RegisterPage';
-
+import LawComp from './Pages/Laws'
 import InteractiveMap from "./Pages/InteractiveMap";
 import NotFound from "./Pages/NotFound";
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
       <Route path="/signup" element={<RegisterPage />} />
         <Route path="/InteractiveMap" element={<InteractiveMap />} />
         <Route path="*" element={<NotFound />} />
+        <Route path='/laws' element={ <LawComp />} />
       </Route>
     </Routes>
   );

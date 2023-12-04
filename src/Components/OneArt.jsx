@@ -37,8 +37,8 @@ return (
 </div>
     <div className='px-8 sm:px-12 md:px-20 lg:px-32 xl:px-48'>
     {singleArticle && (
-        <div key={singleArticle._id} className='max-w-screen-xl mx-auto'>
-        <Card shadow style={{ width: '100%', maxWidth: '35rem', margin: 'auto' }}>
+        <div key={singleArticle._id} className='max-w-screen-xl mx-auto  max-w-xl'>
+        <Card shadow className='w-full mx-auto my-auto'>
             <Image src={singleArticle?.imgSrc[0]} alt="Article Image" />
             <CardHeader>
             <h2>{singleArticle.title}</h2>
@@ -47,7 +47,6 @@ return (
                 <CardBody
                 key={index}
                 className={index % 2 === 0 ? 'text-left' : 'text-right'}
-                style={{ margin: '4px', padding: '8px' }}
                 >
                 <div>
                     <h4 className='font-bold italic py-1'>{item.headline}</h4>
