@@ -31,22 +31,22 @@ const AllLaws = () => {
             <div >
                 <div >
                 <CardBody>
-  {law.article.map((article, index) => (
-    <div key={article._id} className="mb-4">
-      <h3 className={`text-xl font-bold mb-2 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>{article.headline}</h3>
-      <p className={`mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-        {article.paragraph}
-      </p>
-    </div>
-  ))}
-</CardBody>
-</div>
+                {law.article.map((article, index) => (
+                  <div key={article._id} className="mb-4">
+                    <h3 className={`text-xl font-bold mb-2 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>{article.headline}</h3>
+                    <p className={`mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                      {article.paragraph}
+                    </p>
+                  </div>
+                ))}
+            </CardBody>
+          </div>
             <Image
                 src={law.imgSrc}
                 alt="Law Image"
                 className="w-full h-auto object-cover rounded-full mx-auto"
             />
-            </div>
+          </div>
           </Card>
         ))
       ) : (
