@@ -79,14 +79,13 @@ const FileTranslate = () => {
           <input type='file' name='translateDocument' onChange={handleDocument} />
           <button><Button>Translate Document</Button></button> 
           <div className='block mt-4'>
-          { objectURL && ( <Button >
-             
+          	{ objectURL && ( <Button >             
                   <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}onClick={() => setObjectURL(null)} >
                     Download your Translated document
-                  </a>
-             
-            </Button>     )}   
-            </div>          
+                  </a>             
+            		</Button>)
+						}   
+          </div>          
         </form>
 			</div>
 		</>
