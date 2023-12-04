@@ -1,3 +1,4 @@
+// HomeButtons.jsx
 import { Button, Link } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -5,21 +6,29 @@ import {
   faSearch,
   faNewspaper,
   faLanguage,
+  faComments,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HomeButtons = () => {
   const buttons = [
-    { label: "Law Assistance", icon: faGavel, path: '/not-found' },
-    { label: "Course Finder", icon: faSearch, path: '/not-found' },
-    { label: "News", icon: faNewspaper, path: '/not-found' },
-    { label: "Translation Assistance", icon: faLanguage, path: '/translate' },
+    { label: "Law Assistance", icon: faGavel, path: "/law-assistance" },
+    { label: "Course Finder", icon: faSearch, path: "/course-finder" },
+    { label: "News", icon: faNewspaper, path: "/news" },
+    { label: "Translation Assistance", icon: faLanguage, path: "/translate" },
+    { label: "Community Forum", icon: faComments, path: "/forum" },
   ];
 
   return (
     <div className="p-4 flex justify-center">
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-5 gap-4">
+        {" "}
+        {/* Updated to grid-cols-5 */}
         {buttons.map((button, index) => (
-          <Link href={button.path} key={index} className="flex flex-col items-center text-danger">
+          <Link
+            href={button.path}
+            key={index}
+            className="flex flex-col items-center text-center"
+          >
             <Button
               auto
               bordered
@@ -37,4 +46,3 @@ const HomeButtons = () => {
 };
 
 export default HomeButtons;
-
