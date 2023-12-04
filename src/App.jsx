@@ -19,8 +19,7 @@ export default function App() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/article" element={<Articles />} />
         <Route path="/article/:id" element={<SingleArticle />} />
-        <Route path="/translate" element={<TranslationPage />} />
-        <Route path="/tab" element={<TranslateTab />} />
+        <Route path="/translate" element={<TranslateTab />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/InteractiveMap" element={<InteractiveMap />} />
