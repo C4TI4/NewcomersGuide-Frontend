@@ -6,9 +6,7 @@ import FileTranslate from "./FileTranslate";
 const TranslateTab = () => {
   const [translationMode, setTranslationMode] = useState(true)
   return (
-    // const [activeTab, setActiveTab] = useState("TextTranslate");
-
-<>
+  <>
     <div className='flex items-center gap-4 justify-center mt-12 mb-4'>
     {/* Tab nav */}
       <button className={`m-2`}>
@@ -21,7 +19,8 @@ const TranslateTab = () => {
       </button>          
       <button>
         <Button color="danger" 
-        onClick={() => setTranslationMode(false)}>
+        onClick={() => setTranslationMode(false)}
+        className={`${translationMode ? "border-4 border-indigo-200 border-b-indigo-500" : ""}`} >
           Translate file
           <p>.txt</p>
         </Button>

@@ -3,9 +3,6 @@ import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import TranslationPage from "./Pages/TranslationPage";
 import TranslateTab from "./Components/TranslateTab";
-import TextTranslate from "./Components/TextTranslate";
-import FileTranslate from "./Components/FileTranslate";
-
 import SearchResults from "./Pages/SearchResults";
 import Articles from "./Pages/Articles";
 import SingleArticle from "./Pages/SingleArticle";

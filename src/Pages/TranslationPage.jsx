@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { getTranslateText, getTranslateDocument, getLanguages } from "../lib/dbClient";
 import { Textarea, Button } from "@nextui-org/react";
 import LangDropdown from '../Components/LangDropdown';
-// import TranslateTab from '../Components/TranslateTab';
 
 const TranslationPage = () => {
   const [inputText, setInputText] = useState("");
@@ -81,7 +80,7 @@ const TranslationPage = () => {
 
   return (
     <>
-     <div className='h-[50vh] mb-56'>
+      <div className='h-[50vh] mb-56'>
         <div className='flex items-center gap-4 justify-center mt-12 mb-4'>
           { supportedLanguages.length > 0 && 
             <LangDropdown originLn languageSelection={languageSelection} setLanguageSelection={setLanguageSelection} languages={supportedLanguages} />
