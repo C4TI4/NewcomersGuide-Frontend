@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import TranslationPage from "./Pages/TranslationPage";
+import TranslateTab from "./Components/TranslateTab";
 import SearchResults from "./Pages/SearchResults";
 import Articles from "./Pages/Articles";
 import SingleArticle from "./Pages/SingleArticle";
@@ -18,7 +19,7 @@ export default function App() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/article" element={<Articles />} />
         <Route path="/article/:id" element={<SingleArticle />} />
-        <Route path="/translate" element={<TranslationPage />} />
+        <Route path="/translate" element={<TranslateTab />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/InteractiveMap" element={<InteractiveMap />} />

@@ -35,7 +35,6 @@ const getSearchedContent = async (query) => {
 const getTranslateText = async (inputText, target_lang) => {
     try {
         const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText], target_lang} );
-        // console.log(allTranslation);
         return allTranslation.data;
     } catch (error) {
         console.error(error);
@@ -45,7 +44,6 @@ const getTranslateText = async (inputText, target_lang) => {
 const getLanguages = async () => {
     try {
         const allLanguages = await axios(`${backend}/translate/languages`);
-        console.log({allLanguages});
         return allLanguages.data;
     } catch (error) {
         console.error(error);
@@ -59,7 +57,8 @@ const getTranslateDocument = async (document, targetLang) => {
         formData.append("translateDocument", document)
         formData.append("target_lang", targetLang)
         const sendDocument = await axios.post(`${backend}/translate/document`, formData, { headers: {'Content-type': 'multipart/form-data'} } );
-        console.log(sendDocument)
+        console.log(sendDocument.data)
+        console.log(sendDocument.headers)
         return sendDocument.data;
     } catch (error) {
         console.error(error);
