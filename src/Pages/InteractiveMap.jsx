@@ -1,20 +1,38 @@
-import { MapContainer, TileLayer } from "react-leaflet";
-import 'leaflet/dist/leaflet.css'
-export default function Map() {
+import  { Component } from 'react';
+import ReactMapGl from 'react-map-gl'
+import 'mapbox-gl/dist/mapbox-gl.css';
 
+const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN
 
-// markers
-
-
-return (
-    <div className="h-screen">
-    <MapContainer style={{ height: '70%', width: '70%' }} center={[52.5200, 13.4050]} zoom={13}>
-
-    <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href"https://www.openstreetmap.org/copyright">OpenStreetMap</a> '
-    />
-    </MapContainer>
-    </div>
-);
+class Map extends Component {
+constructor() {
+    super()
+    this.state = {
+    viewport: {
+        width: '100vw',
+        height: '100vh',
+        latitude: 40.78343,
+        longitude: -73.96625,
+        zoom: 11
+    }
+    }
+    this.handleViewportChange = this.handleViewportChange.bind(this)
 }
+handleViewportChange(viewport) {
+    this.setState(prevState => ({
+    viewport: {...prevState.viewport, ...viewport}
+    }))
+  }
+  render() {
+    return (
+      <ReactMapGl
+        {...this.state.viewport}
+        onViewportChange={viewport => this.setState({viewport})}
+        mapboxApiAccessToken={mapboxToken}
+        mapStyle="mapbox://styles/mapbox/streets-v10"
+      />
+    )
+  }
+}
+
+export default Map;
