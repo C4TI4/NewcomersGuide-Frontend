@@ -82,7 +82,7 @@ const TextTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
               maxLength={1000}
             />
             <button className='block absolute bottom-1 right-1'>
-              <Button color="secondary">Translate</Button>        
+              <Button className={`block h-fit py-1 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700`}>Translate</Button>     
             </button>
           </form>
           <div className=' w-full md:w-1/2'>

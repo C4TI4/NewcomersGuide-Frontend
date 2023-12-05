@@ -81,7 +81,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 							}
 						</div>
 						<section className="mx-auto max-w-lg hover:cursor-pointer ">
-								<div className="p-10 border-2 border-purple-600 rounded-xl" {...getRootProps()}>
+								<div className="p-10 border-2 border-purple-500 rounded-xl mx-1.5" {...getRootProps()}>
 									<input {...getInputProps()} />
 									<p>Drag &apos;n&apos; drop some files here, or click to select files</p>
 								</div>
