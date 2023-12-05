@@ -9,7 +9,7 @@ import LookingSomething from "../Components/LookingSomething";
 import HeroSection from "../Components/HeroSection";
 import { NextUIProvider } from "@nextui-org/react";
 import AllArt from "../Components/AllArt";
-import FaqsSearchbar from "../Components/FaqsSearchbar"
+
 
 export default function Home() {
   const { isDarkMode } = useThemeContext();
@@ -21,7 +21,7 @@ export default function Home() {
         <HomeButtons />
         <ArticleSlider />
         <AllArt />
-        <FaqsSearchbar />
+
         <JourneyGermany />
         <div className="container mx-auto p-6">
           <div className="flex flex-wrap -mx-3">
