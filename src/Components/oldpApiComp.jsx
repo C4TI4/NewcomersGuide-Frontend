@@ -54,7 +54,7 @@ const copyToClipboard = async () => {
 };
 
 return (
-    <div className="w-11/12 mx-auto my-8">
+    <div className="w-11/12 mx-auto my-8 ">
     {Array.isArray(old) && old.length > 0 ? (
         <Card shadow className="rounded-lg overflow-hidden">
         <CardBody>
