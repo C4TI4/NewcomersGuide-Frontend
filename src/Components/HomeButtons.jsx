@@ -4,6 +4,7 @@ import {
   faGavel,
   faNewspaper,
   faLanguage,
+  faComments,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HomeButtons = () => {

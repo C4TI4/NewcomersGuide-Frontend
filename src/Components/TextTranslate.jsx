@@ -1,27 +1,14 @@
-import { useState, useRef, useEffect } from 'react';
-import { getTranslateText, getTranslateDocument, getLanguages } from "../lib/dbClient";
+import { useState } from 'react';
+import { getTranslateText } from "../lib/dbClient";
 import { Textarea, Button } from "@nextui-org/react";
 import LangDropdown from '../Components/LangDropdown';
+import useThemeContext from '../context/ThemeContext';
+// import TranslateTab from '../Components/TranslateTab';
 
-const TranslationPage = () => {
+const TextTranslate = ({ languageSelection, setLanguageSelection, supportedLanguages }) => {
+  const { isDarkMode } = useThemeContext()
   const [inputText, setInputText] = useState("");
   const [translatedText, setTranslatedText] = useState(null);
-  const [languageSelection, setLanguageSelection] = useState({
-    originLn: {
-      name: "German",
-      code: "DE",
-    },
-    targetLn: {
-      name: 'English',
-      code: 'EN-US'
-    }
-  })
-  const [document, setDocument] = useState(null);
-  const [translatedDoc, setTranslatedDoc] = useState(null);
-  const [objectURL, setObjectURL] = useState(null)
-  const downloadLink = useRef(null)
-  // state for all supported langs
-  const [supportedLanguages, setSupportedLanguages]=useState([]);
 
   const handleTranslate = async (e) => {
     try {
@@ -45,48 +32,15 @@ const TranslationPage = () => {
     handleTranslate();
   };
 
-  const handleDocument = (e) => {
-    setDocument(e.target.files[0])
-  }
-
-  const translateDocument = async (e) => {
-    try {
-      e.preventDefault();
-      if (!document) return alert('Please select a document for submission');
-      const translatedDocument = await getTranslateDocument(document, languageSelection.targetLn.code);
-      setTranslatedDoc(translatedDocument)
-      const blob  = new Blob([translatedDocument.translation], {type: document.type})
-      setObjectURL(URL.createObjectURL(blob));
-          
-    } catch(err) {
-      console.error(err)
-    }
-  }
-
-  const fetchSupportedLanguages=  async ()=> {
-    setSupportedLanguages(await getLanguages());
-  }
-
-  useEffect (()=>{   
-    fetchSupportedLanguages();
-    }, [])
-    // console.log({supportedLanguages});
-
-  // useEffect(() => {
-  //   if (!objectURL) return    
-  //   downloadLink.current.click();
-  //   setObjectURL(null)
-  // }, [objectURL])
-
   return (
     <>
-      <div className='h-[50vh] mb-56'>
+     <div className='h-[50vh] mb-56'>
         <div className='flex items-center gap-4 justify-center mt-12 mb-4'>
           { supportedLanguages.length > 0 && 
             <LangDropdown originLn languageSelection={languageSelection} setLanguageSelection={setLanguageSelection} languages={supportedLanguages} />
           }
           <button id='arrowsBtn' className='w-4 aspect-square' onClick={swapLanguages}>
-            <svg fill="#fff" height="100%" width="100%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"  viewBox="0 0 495.795 495.795" xmlSpace="preserve">
+            <svg fill={isDarkMode ? "#fff" : '#000' } height="100%" width="100%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"  viewBox="0 0 495.795 495.795" xmlSpace="preserve">
               <g id="XMLID_120_">
                 <path
                   id="XMLID_122_"
@@ -110,29 +64,17 @@ const TranslationPage = () => {
             <LangDropdown languageSelection={languageSelection} setLanguageSelection={setLanguageSelection} languages={supportedLanguages} />
           }
         </div>
-        <form onSubmit={translateDocument} className='mb-4 text-center'>
-          <input type='file' name='translateDocument' onChange={handleDocument} />
-          <button><Button>Translate Document</Button></button> 
-          <div className='block mt-4'>
-            <Button>
-              { objectURL && (
-                  <a href={objectURL} download={`translated-${document?.name}`} ref={downloadLink}>
-                    Download your Translated document
-                  </a>
-              )}
-            </Button>        
-            </div>          
-        </form>     
+             
         <div className='flex flex-wrap md:flex-nowrap gap-4 w-full md:w-3/4 mx-auto  justify-center'>
           <form className=' w-full md:w-1/2 relative' onSubmit={(e) => handleTranslate(e)}>
             <Textarea
               label="Input your text"
               classNames={{
-                input: "resize-y min-h-[10em] md:min-h-[15em]",
+                input: `resize-y min-h-[10em] md:min-h-[15em]`,
               }}
               disableAnimation
               disableAutosize
-              variant="bordered"
+              variant={isDarkMode ? "bordered" : "faded"}
               value={inputText}
               // minRows={12}
               onValueChange={setInputText}
@@ -150,7 +92,7 @@ const TranslationPage = () => {
                 input: "resize-y min-h-[10em] md:min-h-[15em]",
               }}
               disableAutosize
-              variant="bordered"
+              variant={isDarkMode ? "bordered" : "faded"}
               value={translatedText ? translatedText.text : ""}
               disabled
             />
@@ -158,7 +100,8 @@ const TranslationPage = () => {
         </div>
       </div>
     </>
-  );
-};
 
-export default TranslationPage;
+  )
+}
+
+export default TextTranslate

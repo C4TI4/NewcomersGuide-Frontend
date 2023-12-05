@@ -35,7 +35,6 @@ const getSearchedContent = async (query) => {
 const getTranslateText = async (inputText, target_lang) => {
     try {
         const allTranslation = await axios.post(`${backend}/translate`, {text: [inputText], target_lang} );
-        // console.log(allTranslation);
         return allTranslation.data;
     } catch (error) {
         console.error(error);
@@ -45,20 +44,20 @@ const getTranslateText = async (inputText, target_lang) => {
 const getLanguages = async () => {
     try {
         const allLanguages = await axios(`${backend}/translate/languages`);
-        console.log({allLanguages});
         return allLanguages.data;
     } catch (error) {
         console.error(error);
     }
 };
-   
 // to send/post uploaded file to backend
-const getTranslateDocument = async (document) => {
+const getTranslateDocument = async (document, targetLang) => {
     try {
         const formData = new FormData();
         formData.append("translateDocument", document)
+        formData.append("target_lang", targetLang)
         const sendDocument = await axios.post(`${backend}/translate/document`, formData, { headers: {'Content-type': 'multipart/form-data'} } );
-        console.log(sendDocument)
+        console.log(sendDocument.data)
+        console.log(sendDocument.headers)
         return sendDocument.data;
     } catch (error) {
         console.error(error);
@@ -68,29 +67,65 @@ const getTranslateDocument = async (document) => {
 
 const loginUser = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+        const response = await axios.post(`${backend}/auth/login`, {
         email,
         password,
-      });
-      console.log('Login Successful:', response.data);
-      return response.data;
+    });
+    console.log('Login Successful:', response.headers.authorization);
+    return response.headers.authorization;
     } catch (error) {
-      console.error('Login Error:', error);
-      throw new Error('Login failed');
+        console.error('Login Error:', error);
+        throw new Error('Login failed');
     }
-  };
-  
-  
-  const createUser = async (userData) => {
+};
+
+
+const createUser = async (userData) => {
     try {
         const response = await axios.post(`${backend}/auth/register`, userData);
-        console.log('User Created:', response.data);
-        return response.data;
+        console.log('User Created:', response.headers.authorization);
+        return response.headers.authorization;
     } catch (error) {
         console.error('User Creation Error:', error);
-        throw new Error('Failed to create user');
     }
-  };
+};
+
+const sendToken = async (token) => {
+    try {
+        const response = await axios(`${backend}/auth/me`, {headers:{"Authorization": token}});
+        console.log('User retrieved:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Token could not be verify:', error);
+    }
+}
+
+const getAllLaws = async () => {
+    try {
+        const response = await axios.get(`${backend}/law/`); 
+        return response.data;
+    } catch (error) {
+        throw new Error('Error fetching laws:', error);
+    }
+};
+
+const getOldpApi = async () => {
+    try {
+        const oldpApi = await axios.get(`${backend}/old/book/1176`);
+        return oldpApi.data;
+    } catch (error) {
+        throw new Error ('Error fetching data from oldp-Api', error);
+    }
+}
+
+const getOldpApiId = async(id) => {
+    try {
+        const oldpApi = await axios.get(`${backend}/old/law/${id}`);
+        return oldpApi.data;
+    } catch (error) {
+        throw new Error ('Error fetching data from oldp-Api', error);
+    }
+}
 
 export {
     getAllArticle,
@@ -100,7 +135,11 @@ export {
     getSearchedContent,
     loginUser,
     createUser,
-    getLanguages
+    getLanguages,
+    sendToken,
+    getAllLaws,
+    getOldpApi,
+    getOldpApiId
 }
 
 

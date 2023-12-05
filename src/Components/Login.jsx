@@ -3,17 +3,21 @@ import { useState } from 'react';
 import { Input, Button, Card, Link } from '@nextui-org/react';
 import { loginUser } from '../lib/dbClient';
 import { useNavigate } from 'react-router-dom';
+import useAuthContext from '../context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+const { setToken } = useAuthContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const userData = await loginUser(email, password);
-      console.log('User Data:', userData);
+      const userToken = await loginUser(email, password);
+      localStorage.setItem("token", userToken);
+      setToken(userToken)
+      console.log('User Token:', userToken);
       navigate('/');
     } catch (error) {
       console.error('Login Error:', error);
