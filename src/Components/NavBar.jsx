@@ -21,12 +21,14 @@ import { MoonIcon } from '../assets/Images/MoonIcon';
 import { SunIcon } from '../assets/Images/SunIcon';
 import useThemeContext from '../context/ThemeContext';
 import {useNavigate} from 'react-router-dom'
+import useAuthContext from '../context/AuthContext.jsx'
 
 export default function NavBar() {
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {isDarkMode, toggleDarkMode} = useThemeContext()
   const [searchQuery, setSearchQuery] = useState('')
+  const {isAuth, user} = useAuthContext()
 
   const menuItems = [
     "Profile",
@@ -49,6 +51,8 @@ export default function NavBar() {
       console.error(error)
     }
   }
+
+
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} >
@@ -174,6 +178,7 @@ export default function NavBar() {
             />
         </form>
         {/* Profile Dropdown */}
+
         <Dropdown placement="bottom-end">
           <DropdownTrigger className="hidden sm:block">
             <Avatar
@@ -191,11 +196,8 @@ export default function NavBar() {
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">UserName</p>
+              {isAuth && ( <p className="font-semibold">{user ? user.userName : null}</p>)}
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="logout" color="danger">Log Out</DropdownItem>
 
           </DropdownMenu>
         </Dropdown>

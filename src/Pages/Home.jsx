@@ -1,6 +1,5 @@
-import React from "react";
 import useThemeContext from "../context/ThemeContext";
-import Header from "../Components/Header";
+//import Header from "../Components/Header";
 import HomeButtons from "../Components/HomeButtons";
 import ArticleSlider from "../Components/ArticleSlider";
 import JourneyGermany from "../Components/JourneyGermany";
@@ -9,6 +8,8 @@ import ContactForm from "../Components/ContactForm";
 import LookingSomething from "../Components/LookingSomething";
 import HeroSection from "../Components/HeroSection";
 import { NextUIProvider } from "@nextui-org/react";
+import AllArt from "../Components/AllArt";
+
 
 export default function Home() {
   const { isDarkMode } = useThemeContext();
@@ -19,6 +20,8 @@ export default function Home() {
         <HeroSection />
         <HomeButtons />
         <ArticleSlider />
+        <AllArt />
+
         <JourneyGermany />
         <div className="container mx-auto p-6">
           <div className="flex flex-wrap -mx-3">
