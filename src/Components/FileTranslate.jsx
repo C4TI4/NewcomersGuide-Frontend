@@ -14,7 +14,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 
 	const translateDocument = async (e) => {
     try {
-      // e.preventDefault();
+    //   e.preventDefault();
       if (!document) return alert('Please select a document for submission');
       const translatedDocument = await getTranslateDocument(document, languageSelection.targetLn.code);
       setTranslatedDoc(translatedDocument)
@@ -28,12 +28,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
   }
   console.log(objectURL)
 
-  // const handleDocument = (e) => {
-  //   setDocument(e.target.files[0])
-	// 	console.log(e.target.files[0])
-  // }
-
-  const swapLanguages = () => {
+   const swapLanguages = () => {
     setLanguageSelection((prev) => ({
       originLn: prev.targetLn,
       targetLn: prev.originLn,
@@ -46,7 +41,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 		console.log(acceptedFiles[0])
   }, [])
 
-	const {acceptedFiles, getRootProps, getInputProps} = useDropzone({onDrop, maxFiles:1});  
+	const {acceptedFiles, getRootProps, getInputProps} = useDropzone({onDrop, maxFiles:1, accept: {"text/plain": [".txt"]}});  
   const files = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
@@ -85,15 +80,15 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 								<LangDropdown languageSelection={languageSelection} setLanguageSelection={setLanguageSelection} languages={supportedLanguages} />
 							}
 						</div>
-						<section className="container">
-								<div {...getRootProps({className: 'dropzone'})}>
+						<section className="mx-auto max-w-lg hover:cursor-pointer ">
+								<div className="p-10 border-2 border-purple-600 rounded-xl" {...getRootProps()}>
 									<input {...getInputProps()} />
 									<p>Drag &apos;n&apos; drop some files here, or click to select files</p>
 								</div>
-								<aside>
+								<div>
 									<h4>Files</h4>
 									<ul>{files}</ul>
-								</aside>
+								</div>
 						</section>
 						<div className='flex flex-col gap-4 flex-wrap justify-center items-center mt-16'>
 							{/* <form onSubmit={translateDocument} className='text-center w-fit border-2 border-red-600'> */}
@@ -107,7 +102,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 										onPress={translateDocument}>
 											Translate Document
 									</Button>
-									<Button color="danger" 
+									{document && <Button color="danger" 
 										className='w-fit h-fit py-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus:outline-none' isDisabled={!objectURL}>             
 											<a href={objectURL} 
 												download={`translated-${document.name}`}
@@ -116,7 +111,7 @@ const FileTranslate = ({ languageSelection, setLanguageSelection, supportedLangu
 											>
 												Download translation
 											</a>             
-									</Button>
+									</Button>}
 								</div> 
 						</div>          
 					</div>
