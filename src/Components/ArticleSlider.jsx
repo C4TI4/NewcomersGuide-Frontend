@@ -30,7 +30,6 @@ const ArticleSlider = () => {
   }
   return (
     <div className='max-w-4xl mx-auto'>
-        <div className='text-center font-bold my-8'><h3>You might like</h3></div>
     <Slider {...settings} className="mx-8 sm:mx-8 md:mx-12 lg:mx-36 xl:mx-20">
       {Array.isArray(articleList) && articleList.length > 0 ? (
         articleList.map((article) => (
@@ -57,6 +56,7 @@ const ArticleSlider = () => {
         </div>
       )}
     </Slider>
+    <div className='text-center text-xl font-bold my-8'><h3>You might like</h3></div>
     </div>
   );
 };

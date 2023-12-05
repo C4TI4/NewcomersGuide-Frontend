@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getAllArticle } from '../lib/dbClient';
-import {Card, CardHeader, Image } from "@nextui-org/react";
+import {Card, Image, CardFooter, Button} from "@nextui-org/react";
 
 export default function AllArt() {
 
@@ -22,7 +22,7 @@ useEffect(() => {
 
 return (
     <>
-    <div className="relative w-full h-30vh overflow-hidden mb-2.5">
+  {/*  <div className="relative w-full h-30vh overflow-hidden mb-2.5">
         <img
         src="https://images.pexels.com/photos/417023/pexels-photo-417023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Berlin street-art"
@@ -32,10 +32,45 @@ return (
         <div className="absolute inset-0 flex justify-center items-center text-center">
         <h3 className="font-bold text-xl text-white z-10">YOU MIGHT LIKE TO READ</h3>
         </div>
-    </div>
+    </div> */}
     <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
         {Array.isArray(articleList) && articleList.length > 0
+            ? articleList.map((article) => (
+                <Link to={`/article/${article._id}`} key={article._id}>
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-7">
+
+                    <Image
+                        removeWrapper
+                        alt="Relaxing app background"
+                        className="z-0 w-full h-full object-cover"
+                        src={article.imgSrc[0]}
+                    />
+                    <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+                        <div className="flex flex-grow gap-2 items-center">
+                        <div className="flex flex-col">
+                            {article.article && article.article[0] && (
+                                <>
+                            <p className="text-tiny text-white/60">{article.article[0].headline}</p>
+                            <h4 className="text-white/90 font-medium text-xl">{article.title}</h4>
+                            </>
+                            )}
+                        </div>
+                        </div>
+                    <Button radius="full" size="sm">Article</Button>
+                    </CardFooter>
+                    </Card>
+                </Link>
+                ))
+            : <p>No articles</p>
+            }
+        </div>
+    </div>
+    </>
+);
+}
+        
+{/*        {Array.isArray(articleList) && articleList.length > 0
     ? articleList.map((article) => (
         <div key={article._id}>
             <Link to={`/article/${article._id}`}>
@@ -58,7 +93,7 @@ return (
                         )}
                     </CardHeader>
                 </Card>
-            </Link>
+                </Link> 
         </div>
     ))
     : <p> No articles</p>
@@ -68,3 +103,7 @@ return (
     </>
 );
 }
+
+*/}
+
+

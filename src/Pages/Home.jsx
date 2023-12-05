@@ -1,4 +1,3 @@
-import React from "react";
 import useThemeContext from "../context/ThemeContext";
 import Header from "../Components/Header";
 import HomeButtons from "../Components/HomeButtons";
@@ -7,6 +6,8 @@ import Faqs from "../Components/Faqs";
 import ContactForm from "../Components/ContactForm";
 import LookingSomething from "../Components/LookingSomething";
 import { NextUIProvider } from "@nextui-org/react";
+import ArticleSlider from "../Components/ArticleSlider";
+import AllArt from "../Components/AllArt";
 
 export default function Home() {
   const { isDarkMode } = useThemeContext();
@@ -16,6 +17,8 @@ export default function Home() {
       <div className={`app-container ${isDarkMode ? "dark" : ""}`}>
         <Header />
         <HomeButtons />
+        <ArticleSlider />
+        <AllArt />
         <FaqsSearchbar />
         <div className="container mx-auto p-6">
           <div className="flex flex-wrap -mx-3">

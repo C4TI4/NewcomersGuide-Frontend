@@ -8,13 +8,21 @@ const SignUp = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const navigate = useNavigate();
   const { setToken } = useAuthContext();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+      if (password !== confirmPassword) {
+      alert("Passwords don't match. Please re-enter.");
+    return; 
+    } 
+
     try {
-      const userToken = await createUser({ userName, email, password });
+      const userToken = await createUser({ userName, email, password, confirmPassword });
       localStorage.setItem("token", userToken);
       setToken(userToken)
       navigate('/');
@@ -27,7 +35,7 @@ const SignUp = () => {
   };
   return (
     <div className='flex justify-center items-center h-screen'>
-      <Card shadow style={{ width: '400px', height: '500px', padding: '20px' }}>
+      <Card shadow className="w-full max-w-md mx-auto p-4">
         <h2>Sign Up</h2>
         <form onSubmit={handleSignUp}>
           <Input
@@ -54,6 +62,16 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             className='my-8'
           />
+
+      <Input
+            type="password"
+            label="Confirm Password"
+            placeholder="Re-enter your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="my-8"
+  /> 
+  
           <p className='text-right text-sm my-4'>Already have an account? <Link onClick={handleNavigate} className='text-sm cursor-pointer'> Login here</Link></p>
           <Button color="danger" className='my-4 px-8' type="submit" block>
             Sign Up
