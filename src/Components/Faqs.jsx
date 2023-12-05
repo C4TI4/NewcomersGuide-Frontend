@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Faqs = () => {
   const [openTab, setOpenTab] = useState(null);
-
   const toggleTab = (index) => {
     setOpenTab(openTab === index ? null : index);
   };
@@ -39,41 +38,34 @@ const Faqs = () => {
     },
   ];
   return (
-    <div
-      className="max-w-4xl mx-auto p-6 shadow-lg rounded-lg"
-      style={{
-        backgroundImage:
-          "url('public/images/claudio-schwarz-TScGhJM716g-unsplash.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="bg-white bg-opacity-90 p-6 rounded-lg">
-        <h2 className="text-3xl font-semibold mb-8 text-center text-gray-800">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {faqData.map((faq, index) => (
-            <div key={index} className="bg-gray-100 rounded-lg overflow-hidden">
-              <h3
-                onClick={() => toggleTab(index)}
-                className="faq-question cursor-pointer p-4 text-lg text-gray-700 hover:bg-gray-200 flex justify-between items-center font-medium"
-              >
-                {faq.question}
-                <span className="text-gray-400">
-                  {openTab === index ? "-" : "+"}
-                </span>
-              </h3>
-              <div
-                className={`faq-answer transition-max-height duration-500 ease-in-out ${
-                  openTab === index ? "max-h-96 p-4" : "max-h-0"
-                }`}
-              >
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
+    <div className="container mx-auto p-6">
+      <h2 className="text-3xl font-semibold mb-8 text-center text-gray-800">
+        Frequently Asked Questions
+      </h2>
+      <div className="space-y-4">
+        {faqData.map((faq, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+          >
+            <h3
+              onClick={() => toggleTab(index)}
+              className="faq-question cursor-pointer p-4 text-lg text-gray-700 hover:bg-gray-100 flex justify-between items-center font-medium"
+            >
+              {faq.question}
+              <span className="text-gray-400">
+                {openTab === index ? "-" : "+"}
+              </span>
+            </h3>
+            <div
+              className={`faq-answer transition-max-height duration-500 ease-in-out ${
+                openTab === index ? "max-h-96 p-4" : "max-h-0"
+              }`}
+            >
+              <p className="text-gray-600">{faq.answer}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
