@@ -53,6 +53,10 @@ export default function NavBar() {
   }
 
 
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} >
@@ -195,8 +199,14 @@ export default function NavBar() {
 
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              {isAuth && ( <p className="font-semibold">{user ? user.userName : null}</p>)}
+              {isAuth ? (
+          <>
+            <p className="font-semibold">Signed in as</p>
+            <p className="font-semibold">{user ? user.userName : null}</p>
+          </>
+        ) : (
+          <Link to={'/login'} onClick={handleLoginClick}>Login</Link>
+        )}
             </DropdownItem>
 
           </DropdownMenu>
