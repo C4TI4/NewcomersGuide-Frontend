@@ -20,7 +20,6 @@ const ArticleSlider = () => {
   }, []);
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1, 
@@ -29,8 +28,8 @@ const ArticleSlider = () => {
     autoplaySpeed: 5000, 
   }
   return (
-    <div className='max-w-4xl mx-auto'>
-    <Slider {...settings} className="mx-8 sm:mx-8 md:mx-12 lg:mx-36 xl:mx-20">
+    <div className='w-9/12 mx-auto'>
+    <Slider {...settings} className="mx-2 sm:mx-8 md:mx-12 lg:mx-36 xl:mx-20">
       {Array.isArray(articleList) && articleList.length > 0 ? (
         articleList.map((article) => (
           <div key={article._id}>
@@ -41,7 +40,7 @@ const ArticleSlider = () => {
               <CardHeader className="absolute z-10 top-1 flex-col">
                 {article.article && article.article[0] && (
                   <>
-                    <p className="text-medium text-white-80 uppercase font-bold md:mt-48 md:mb-6 lg:mt-36 lg:mb-6">{article.article[0].headline}</p>
+                    <p className="text-medium text-white uppercase font-bold md:mt-48 md:mb-6 lg:mt-36 lg:mb-6">{article.article[0].headline}</p>
                     <h4 className="text-white font-bold text-xl">{article.title}</h4>
                   </>
                 )}
@@ -56,7 +55,6 @@ const ArticleSlider = () => {
         </div>
       )}
     </Slider>
-    <div className='text-center text-xl font-bold my-8'><h3>You might like</h3></div>
     </div>
   );
 };

@@ -9,6 +9,8 @@ import LookingSomething from "../Components/LookingSomething";
 import HeroSection from "../Components/HeroSection";
 import { NextUIProvider } from "@nextui-org/react";
 import AllArt from "../Components/AllArt";
+import OldpApi from "../Components/oldpApiComp";
+
 
 
 export default function Home() {
@@ -21,7 +23,6 @@ export default function Home() {
         <HomeButtons />
         <ArticleSlider />
         <AllArt />
-
         <JourneyGermany />
         <div className="container mx-auto p-6">
           <div className="flex flex-wrap -mx-3">
@@ -33,6 +34,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <OldpApi />
         <LookingSomething />
       </div>
     </NextUIProvider>
