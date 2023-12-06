@@ -132,6 +132,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
         </NavbarItem>
 
         {/*  Interactive map - link to Map page*/}
+        
         <NavbarItem  className="hover:border-solid-black-500">
           <Link color="foreground" href="/InteractiveMap">
             Map
