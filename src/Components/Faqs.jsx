@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import useThemeContext from "../context/ThemeContext";
 
 const Faqs = () => {
   const [openTab, setOpenTab] = useState(null);
+  const { isDarkMode } = useThemeContext();
+
   const toggleTab = (index) => {
     setOpenTab(openTab === index ? null : index);
   };
+
   const faqData = [
     {
       question: "What is the Newcomer's Guide: Germany Edition?",
@@ -38,31 +42,47 @@ const Faqs = () => {
     },
   ];
   return (
-    <div className="container mx-auto py-10 px-6">
-      <h2 className="text-4xl lg:text-5xl font-bold mb-10 text-center text-gray-800">
+    <div
+      className={`container mx-auto py-10 px-6 ${
+        isDarkMode ? "bg-gray-800" : "bg-white"
+      }`}
+    >
+      <h2
+        className={`text-3xl lg:text-4xl font-bold mb-10 text-center ${
+          isDarkMode ? "text-white" : "text-gray-800"
+        }`}
+      >
         Frequently Asked Questions
       </h2>
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {faqData.map((faq, index) => (
           <div
             key={index}
-            className="bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden"
+            className={`rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden ${
+              isDarkMode ? "bg-gray-700" : "bg-white"
+            }`}
           >
             <h3
               onClick={() => toggleTab(index)}
-              className="faq-question cursor-pointer p-5 text-xl lg:text-2xl text-gray-800 hover:bg-gray-200 flex justify-between items-center font-semibold"
+              className={`cursor-pointer p-4 text-lg lg:text-xl ${
+                isDarkMode ? "text-white" : "text-gray-800"
+              } hover:bg-gray-100 flex justify-between items-center font-semibold`}
             >
               {faq.question}
-              <span className="text-gray-500 text-2xl">
+              <span
+                className={`text-xl ${
+                  isDarkMode ? "text-gray-300" : "text-gray-500"
+                }`}
+              >
                 {openTab === index ? "−" : "+"}
               </span>
             </h3>
             <div
-              className={`faq-answer transition-max-height duration-500 ease-in-out ${
-                openTab === index ? "max-h-96 p-5" : "max-h-0"
-              }`}
+              className={`transition-max-height duration-500 ease-in-out ${
+                openTab === index ? "max-h-96 p-4" : "max-h-0"
+              } ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
             >
-              <p className="text-gray-700 text-lg">{faq.answer}</p>
+              <p className="text-base">{faq.answer}</p>
             </div>
           </div>
         ))}
