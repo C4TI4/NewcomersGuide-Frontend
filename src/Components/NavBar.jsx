@@ -89,50 +89,33 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
             {/* Dropdown Items */}
 
             <DropdownItem>
-              <Link color="foreground" href="/article">
+              <Link color="foreground" href="article/65704f5a36edba074555456b">
                 Clothing & Style
               </Link>
             </DropdownItem>
 
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/657052f636edba074555458f">
               Recycling 
               </Link>
             </DropdownItem>
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b4">
                 Post Service & Laws
               </Link>
             </DropdownItem>
 
+          
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                Public Transport
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                Clubs & Q`s
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/article/655de42a0304ba04a95df2a3">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b0">
                 At The Supermarket
               </Link>
             </DropdownItem>
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                On the Streets
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b1">
                 Language & Slang
               </Link>
             </DropdownItem>
