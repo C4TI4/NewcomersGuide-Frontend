@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import useThemeContext from "../context/ThemeContext";
 
 const JourneyGermany = () => {
-  const [highlight, setHighlight] = useState(false);
+  const { isDarkMode } = useThemeContext();
 
   useEffect(() => {
-    const checkScroll = () => {
-      const position = window.scrollY;
-      if (position > 100) {
-        setHighlight(true);
-      } else {
-        setHighlight(false);
-      }
-    };
+    const checkScroll = () => {};
 
     window.addEventListener("scroll", checkScroll);
 
@@ -22,32 +16,31 @@ const JourneyGermany = () => {
 
   return (
     <div className="flex items-center justify-center bg-transparent py-16">
-      {" "}
       <div className="text-center">
         <h2
           className={`text-4xl lg:text-6xl font-bold ${
-            highlight ? "text-gray-200" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Why We Started
         </h2>
         <p
           className={`mt-4 text-xl ${
-            highlight ? "text-gray-200" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Simplifying the journey for newcomers in Germany.
         </p>
         <p
           className={`text-3xl font-semibold my-6 ${
-            highlight ? "text-gray-200" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Making Integration Easier and More Accessible
         </p>
         <p
           className={`text-lg mx-auto leading-relaxed max-w-3xl ${
-            highlight ? "text-gray-200" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Comprehensive guides, legal assistance, language courses, and cultural
