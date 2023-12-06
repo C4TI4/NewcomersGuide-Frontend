@@ -23,11 +23,11 @@ import useThemeContext from '../context/ThemeContext';
 import {useNavigate} from 'react-router-dom'
 import useAuthContext from '../context/AuthContext.jsx'
 
-export default function NavBar() {
+export default function NavBar({ searchQuery, setSearchQuery }) {
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {isDarkMode, toggleDarkMode} = useThemeContext()
-  const [searchQuery, setSearchQuery] = useState('')
+  const [inputText, setInputText] = useState(searchQuery)
+  const {isDarkMode, toggleDarkMode} = useThemeContext() 
   const {isAuth, user} = useAuthContext()
 
   const menuItems = [
@@ -46,13 +46,12 @@ export default function NavBar() {
   const handleSearch = async (e) => {
     try {
       e.preventDefault();
-      navigate(`/search?query=${searchQuery}`)
+      setSearchQuery(inputText)
+      navigate(`/search?query=${inputText}`)
     } catch (error) {
       console.error(error)
     }
   }
-
-
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} >
@@ -173,8 +172,8 @@ export default function NavBar() {
             size="sm"
             startContent={<SearchIcon size={18} />}
             type="search"
-            value={searchQuery}
-            onValueChange={setSearchQuery}
+            value={inputText}
+            onValueChange={setInputText}
             />
         </form>
         {/* Profile Dropdown */}
