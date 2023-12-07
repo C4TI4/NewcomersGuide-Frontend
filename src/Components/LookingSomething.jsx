@@ -7,7 +7,10 @@ const LookingSomething = () => {
       className="relative bg-cover bg-center h-64 flex items-center justify-center"
       style={{
         backgroundImage:
-          "url('/images/mateo-krossler-KsOWP1sH6W4-unsplash.jpg')",
+
+          "url('src/assets/Images/images/mateo-krossler-KsOWP1sH6W4-unsplash.jpg')",
+
+
       }}
     >
       <div className="text-center">
