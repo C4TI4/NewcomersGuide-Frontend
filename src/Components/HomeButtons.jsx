@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGavel,
@@ -17,23 +16,32 @@ const HomeButtons = () => {
       description: "Understand local laws and regulations easily.",
       icon: faGavel,
       path: "/laws",
+
       image: "src/assets/Images/images/markus-spiske-0yuH4tIQIYY-unsplash.jpg",
+
+
     },
     {
       title: "Our Articles",
       description: "Stay informed with the latest updates in your area.",
       icon: faNewspaper,
       path: "/article",
+
       image:
         "src/assets/Images/images/claudio-schwarz-pN684G33h_M-unsplash.jpg",
+
+
     },
     {
       title: "Translation Help",
       description: "Effortless translation tools at your fingertips.",
       icon: faLanguage,
       path: "/translate",
+
       image:
         "src/assets/Images/images/jonathan-kemper-CO23oqbJDGY-unsplash.jpg",
+
+    
     },
   ];
 

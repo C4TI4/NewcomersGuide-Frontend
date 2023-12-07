@@ -25,8 +25,8 @@ const getSingleArticle = async (id) => {
 
 const getSearchedContent = async (query) => {
     try {
-        const { data } = await axios(`${backend}/search?query=${query}`)
-        return data;
+        const { data, status } = await axios(`${backend}/search?query=${query}`)
+        return { data, status };
     } catch (error) {
         console.error('failed to fetch searched articles from backend')
     }

@@ -23,11 +23,11 @@ import useThemeContext from '../context/ThemeContext';
 import {useNavigate} from 'react-router-dom'
 import useAuthContext from '../context/AuthContext.jsx'
 
-export default function NavBar() {
+export default function NavBar({ searchQuery, setSearchQuery }) {
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {isDarkMode, toggleDarkMode} = useThemeContext()
-  const [searchQuery, setSearchQuery] = useState('')
+  const [inputText, setInputText] = useState(searchQuery)
+  const {isDarkMode, toggleDarkMode} = useThemeContext() 
   const {isAuth, user} = useAuthContext()
 
   const menuItems = [
@@ -46,12 +46,19 @@ export default function NavBar() {
   const handleSearch = async (e) => {
     try {
       e.preventDefault();
-      navigate(`/search?query=${searchQuery}`)
+      setSearchQuery(inputText)
+      navigate(`/search?query=${inputText}`)
     } catch (error) {
       console.error(error)
     }
   }
 
+
+
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
 
 
   return (
@@ -90,50 +97,33 @@ export default function NavBar() {
             {/* Dropdown Items */}
 
             <DropdownItem>
-              <Link color="foreground" href="/article">
+              <Link color="foreground" href="article/65704f5a36edba074555456b">
                 Clothing & Style
               </Link>
             </DropdownItem>
 
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/657052f636edba074555458f">
               Recycling 
               </Link>
             </DropdownItem>
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b4">
                 Post Service & Laws
               </Link>
             </DropdownItem>
 
+          
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                Public Transport
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                Clubs & Q`s
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/article/655de42a0304ba04a95df2a3">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b0">
                 At The Supermarket
               </Link>
             </DropdownItem>
 
             <DropdownItem>
-              <Link color="foreground" href="/articles-page">
-                On the Streets
-              </Link>
-            </DropdownItem>
-
-            <DropdownItem>
-              <Link color="foreground" href="/articles-page">
+              <Link color="foreground" href="article/6568c7df64e3599d10df81b1">
                 Language & Slang
               </Link>
             </DropdownItem>
@@ -150,6 +140,7 @@ export default function NavBar() {
         </NavbarItem>
 
         {/*  Interactive map - link to Map page*/}
+        
         <NavbarItem  className="hover:border-solid-black-500">
           <Link color="foreground" href="/InteractiveMap">
             Map
@@ -173,8 +164,8 @@ export default function NavBar() {
             size="sm"
             startContent={<SearchIcon size={18} />}
             type="search"
-            value={searchQuery}
-            onValueChange={setSearchQuery}
+            value={inputText}
+            onValueChange={setInputText}
             />
         </form>
         {/* Profile Dropdown */}
@@ -195,8 +186,14 @@ export default function NavBar() {
 
             {/* Dropdown Menu Items */}
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              {isAuth && ( <p className="font-semibold">{user ? user.userName : null}</p>)}
+              {isAuth ? (
+          <>
+            <p className="font-semibold">Signed in as</p>
+            <p className="font-semibold">{user ? user.userName : null}</p>
+          </>
+        ) : (
+          <Link to={'/login'} onClick={handleLoginClick}>Login</Link>
+        )}
             </DropdownItem>
 
           </DropdownMenu>
