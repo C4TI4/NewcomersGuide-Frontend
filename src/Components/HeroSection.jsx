@@ -39,7 +39,8 @@ export default function HeroSection() {
       className="flex flex-col items-center justify-center"
       style={{
         height: "60vh",
-        backgroundImage: "url('/images/tiago-aleixo-_vrorA4prpU-unsplash.jpg')",
+        backgroundImage:
+          "url('src/assets/Images/images/tiago-aleixo-_vrorA4prpU-unsplash.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
